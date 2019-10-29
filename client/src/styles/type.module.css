@@ -1,0 +1,57 @@
+@import "./colors.module.css";
+
+.display {
+  font-size: 4rem;
+}
+
+.h1 {
+  font-size: 3rem;
+}
+
+.h2 {
+  font-size: 2.5rem;
+}
+
+.h3 {
+  font-size: 2rem;
+}
+
+.h4 {
+  font-size: 1.5rem;
+}
+
+.h5 {
+  font-size: 1rem;
+}
+
+.p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.small {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.sansSerif {
+  font-family: "Helvetica", sans-serif;
+}
+
+.serif {
+  font-family: "Georgia", serif;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.link {
+  composes: sansSerif;
+  composes: bold;
+  text-decoration: none;
+}

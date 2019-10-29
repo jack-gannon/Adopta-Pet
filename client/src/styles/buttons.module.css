@@ -1,0 +1,33 @@
+@import "./colors.module.css";
+
+.btn {
+  composes: sansSerif from "./type.module.css";
+  display: inline-block;
+  padding: 0.5em 1em 0.5em 1em;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
+  transition: all 0.125s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.btnRound {
+  border-radius: 2em;
+}
+
+.btnPrimary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btnPrimaryOutline {
+  background-color: transparent;
+  border-color: var(--primary);
+  color: var(--primary);
+}

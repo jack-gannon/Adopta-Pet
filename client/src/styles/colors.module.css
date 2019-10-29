@@ -1,0 +1,49 @@
+:root {
+  /* --------- Brand Colors -------- */
+
+  /* Primary */
+  --primary: #68559c;
+  --primary-dark: #563d99;
+  --primary-light: #ece5ff;
+
+  /* Secondary */
+  --secondary: #52ccc5;
+  --secondary-dark: #008077;
+  --secondary-light: #e1faf8;
+
+  /* Tertiary */
+  --tertiary: #529fcc;
+  --tertiary-dark: #004873;
+  --tertiary-light: #e2f1fb;
+
+  /* Quaternary */
+  --quaternary: #cc529b;
+  --quaternary-dark: #80004c;
+  --quaternary-light: #fae1f0;
+
+  /* --------- System Colors -------- */
+
+  /* Success */
+  --success: #3d9962;
+  --success-dark: #008033;
+  --success-light: #e5fff0;
+
+  /* Warning */
+  --warning: #ccc052;
+  --warning-dark: #736700;
+  --warning-light: #fbf8e2;
+
+  /* Danger */
+  --danger: #cc5252;
+  --danger-dark: #800000;
+  --danger-light: #fae1e1;
+
+  /* --------- Gray Scale -------- */
+  --gray-lightest: #f7f9fa;
+  --gray-lighter: #f2f3f4;
+  --gray-light: #dadedf;
+  --gray-medium: #a7afb2;
+  --gray-dark: #6f7c80;
+  --gray-darker: #555f61;
+  --gray-darkest: #373d3f;
+}

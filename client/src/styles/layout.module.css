@@ -1,0 +1,6 @@
+@import "./colors.module.css";
+
+.container {
+  width: auto;
+  margin: auto 1rem;
+}
