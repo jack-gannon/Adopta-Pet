@@ -1,0 +1,40 @@
+{
+  "name": "adopta-pet",
+  "version": "1.0.0",
+  "description": "Pet adoption application using Node.js, React, Redux, and the Petfinder API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack-gannon/Adopta-Pet.git"
+  },
+  "keywords": [
+    "Node",
+    "Node.js",
+    "JavaScript",
+    "Petfinder",
+    "React",
+    "Redux",
+    "CSS",
+    "Modules"
+  ],
+  "author": "Jack Gannon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jack-gannon/Adopta-Pet/issues"
+  },
+  "homepage": "https://github.com/jack-gannon/Adopta-Pet#readme",
+  "dependencies": {
+    "@petfinder/petfinder-js": "^1.0.6",
+    "concurrently": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node": "^12.13.0",
+    "nodemon": "^1.19.4"
+  }
+}
