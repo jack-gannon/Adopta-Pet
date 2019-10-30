@@ -6,7 +6,9 @@
   padding: 0.5em 1em 0.5em 1em;
   font-size: 1rem;
   text-decoration: none;
-  border: 1px solid var(--gray-medium);
+  color: var(--gray-darkest);
+  background-color: var(--gray-light);
+  border: 1px solid var(--gray-light);
   border-radius: 4px;
   transition: all 0.125s ease-in-out;
 }

@@ -46,4 +46,6 @@
   --gray-dark: #6f7c80;
   --gray-darker: #555f61;
   --gray-darkest: #373d3f;
+
+  --shadow-1: rgba(111, 124, 128, 0.15);
 }

@@ -2,35 +2,42 @@
 
 .display {
   font-size: 4rem;
+  margin-bottom: 2rem;
 }
 
 .h1 {
   font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .h2 {
   font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .h3 {
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .h4 {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .h5 {
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .p {
   font-size: 1rem;
   line-height: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1rem;
 }
 
@@ -50,8 +57,26 @@
   font-style: italic;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .link {
   composes: sansSerif;
-  composes: bold;
   text-decoration: none;
+  transition: all 0.125s ease-in-out;
+}
+
+.linkDisabled {
+  color: var(--gray-light);
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.linkDisabled:hover {
+  cursor: default;
+  opacity: 1;
+  color: var(--gray-light);
 }
