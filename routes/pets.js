@@ -37,4 +37,19 @@ router.get("/:params", async (req, res) => {
     });
 });
 
+// @route   GET api/pets/pet/:id
+// @desc    Get pet based on ID
+// @access  Public
+router.get("/pet/:id", async (req, res) => {
+  client.animal
+    .show(req.params.id)
+    .then(response => {
+      res.json(response.data.animal);
+    })
+    .catch(error => {
+      console.log(error.message);
+      res.json(error);
+    });
+});
+
 module.exports = router;

@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import Browse from "./Pages/Browse";
 import Navbar from "./Components/Navbar";
 import Saved from "./Pages/Saved";
+import Profile from "./Pages/Profile";
 import { Router } from "@reach/router";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Home path="/" />
         <Browse path="/browse" />
         <Saved path="/saved" />
+        <Profile path="/pet/:id" />
       </Router>
     </Provider>
   );
