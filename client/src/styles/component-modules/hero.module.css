@@ -1,0 +1,26 @@
+@import "../colors.module.css";
+
+.hero {
+  width: 100vw;
+  height: calc(100vh - 3rem);
+  background-color: var(--gray-medium);
+}
+
+.textBox {
+  padding-top: 80%;
+  width: 80vw;
+}
+
+.heroDisplay {
+  composes: sansSerif from "../type.module.css";
+  composes: bold from "../type.module.css";
+  font-size: 4rem;
+  line-height: 3.75rem;
+}
+
+.heroBlurb {
+  composes: sansSerif from "../type.module.css";
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,87 @@
+@import "../colors.module.css";
+
+.navbar {
+  z-index: 6;
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  justify-content: space-between;
+  padding: 0.25rem;
+  background-color: var(--gray-darker);
+}
+
+.navMenuMobile {
+  z-index: -4;
+  position: relative;
+  display: block;
+}
+
+.navMenuMobileToggle {
+  border: 1px solid var(--gray-light);
+  padding: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.navLinksMobileActive {
+  z-index: 2;
+  display: block;
+  position: absolute;
+  right: -0.125em;
+  top: 2.75rem;
+  width: 40vw;
+  background-color: white;
+  border-radius: 8px;
+  animation: slideDown 0.25s ease-in-out;
+}
+
+.navLinksMobileActive li {
+  padding: 1rem;
+  text-align: right;
+}
+
+.navLinksMobileInactive {
+  display: none;
+}
+
+.navbar a {
+  color: var(--gray-dark);
+}
+
+.navMenuDesktop {
+  display: none;
+}
+
+@keyframes slideDown {
+  0% {
+    top: 0rem;
+    opacity: 0;
+  }
+  100% {
+    top: 2.75rem;
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .navMenuMobile {
+    display: none;
+  }
+
+  .navMenuDesktop {
+    display: block;
+  }
+
+  .navLinksDesktop ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .navLinksDesktop li {
+    padding: 1em;
+  }
+
+  .navLinksDesktop li a {
+    color: white;
+  }
+}

@@ -28,6 +28,10 @@
   color: #fff;
 }
 
+.btnLarge {
+  font-size: 1.25rem;
+}
+
 .btnPrimaryOutline {
   background-color: transparent;
   border-color: var(--primary);
