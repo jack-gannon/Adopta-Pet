@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "@reach/router";
+import { BrowserRouter as Link, NavLink } from "react-router-dom";
 import { link } from "../styles/type.module.css";
 import {
   navbar,
@@ -20,9 +20,9 @@ const Navbar = () => {
 
   return (
     <div className={navbar}>
-      <Link to="/">
+      <NavLink to="/">
         <h1>Logo</h1>
-      </Link>
+      </NavLink>
       <div className={navMenuMobile}>
         <button className={navMenuMobileToggle} onClick={() => toggleOpen()}>
           {isOpen ? "X" : "-"}
@@ -30,17 +30,21 @@ const Navbar = () => {
         <nav className={isOpen ? navLinksMobileActive : navLinksMobileInactive}>
           <ul>
             <li>
-              <Link to="/" className={link}>
+              <NavLink to="/" className={link} onClick={() => toggleOpen()}>
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/browse" className={link}>
+              <NavLink
+                to="/browse"
+                className={link}
+                onClick={() => toggleOpen()}
+              >
                 Browse
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/saved" className={link}>
+              <Link to="/saved" className={link} onClick={() => toggleOpen()}>
                 Saved
               </Link>
             </li>

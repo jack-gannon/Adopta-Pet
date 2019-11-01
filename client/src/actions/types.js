@@ -1,6 +1,8 @@
 export const GET_PETS = "GET_PETS";
 export const GET_PETS_ERROR = "GET_PETS_ERROR";
 export const GET_PET = "GET_PET";
+export const CLEAR_PET = "CLEAR_PET";
+export const CLEAR_PETS = "CLEAR_PETS";
 export const SET_LOCATION_FILTER = "SET_LOCATION_FILTER";
 export const SET_TYPE_FILTER = "SET_TYPE_FILTER";
 export const SET_BREED_FILTER = "SET_BREED_FILTER";
@@ -8,3 +10,5 @@ export const SET_GENDER_FILTER = "SET_GENDER_FILTER";
 export const APPLY_FILTER = "APPLY_FILTER";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const SET_LOADING = "SET_LOADING";
+export const LOAD_COMPLETE = "LOAD_COMPLETE";

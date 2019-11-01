@@ -7,17 +7,25 @@ import Browse from "./Pages/Browse";
 import Navbar from "./Components/Navbar";
 import Saved from "./Pages/Saved";
 import Profile from "./Pages/Profile";
-import { Router } from "@reach/router";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <Provider store={store}>
-      <Navbar />
       <Router>
-        <Home path="/" />
-        <Browse path="/browse" />
-        <Saved path="/saved" />
-        <Profile path="/pet/:id" />
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/browse">
+            <Browse />
+          </Route>
+          <Route exact path="/saved">
+            <Saved />
+          </Route>
+          <Route exact path="/pet/:id" component={Profile} />
+        </Switch>
       </Router>
     </Provider>
   );
