@@ -1,36 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { h3, sansSerif, bold } from "../styles/type.module.css";
 import { container } from "../styles/layout.module.css";
 import {
+  browseHeader,
   browseList,
   browseListItem
 } from "../styles/component-modules/browse.module.css";
-import { getPets } from "../actions/pets";
-import { Link } from "react-router-dom";
+import { CLEAR_PET } from "../actions/types";
+import { Link, Route, useRouteMatch } from "react-router-dom";
 import Spinner from "../Components/Spinner";
+import FilterPanel from "../Components/FilterPanel";
+import FilterInputMobile from "../Components/FilterInputMobile";
 
 const Browse = () => {
+  // Application State
   const dispatch = useDispatch();
   const pets = useSelector(state => state.pet.pets);
   const loading = useSelector(state => state.load.loading);
-  useEffect(() => {
-    dispatch(getPets());
-  }, [dispatch]);
 
+  // Component State
+  const [locationFilter, setLocationFilter] = useState("");
+  const [animalType, setAnimalType] = useState("Any");
+
+  const handleLocationChange = e => {
+    setLocationFilter(e.target.value);
+  };
+
+  //Routing
+  const { path } = useRouteMatch();
   return (
     <div className={container}>
       {loading ? (
         <Spinner />
       ) : (
         <>
-          <h1 className={`${h3} ${sansSerif} ${bold}`}>Browse Pets</h1>
+          <h1 className={browseHeader}>Browse Pets</h1>
+          <FilterPanel />
           <ul className={browseList}>
             {pets ? (
               pets.map(pet => {
                 return (
                   <li key={pet.id} className={browseListItem}>
-                    <Link to={`/pet/${pet.id}`}>{pet.name}</Link>
+                    <Link
+                      to={`/pet/${pet.id}`}
+                      onClick={() => dispatch({ type: CLEAR_PET })}
+                    >
+                      {pet.name}
+                    </Link>
                   </li>
                 );
               })

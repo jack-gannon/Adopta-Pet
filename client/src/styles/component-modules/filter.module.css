@@ -1,0 +1,31 @@
+@import "../colors.module.css";
+
+.filterInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterToggle {
+  flex-basis: 33%;
+}
+
+.searchToggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--primary-light);
+  border-radius: 50%;
+  background-color: var(--primary-light);
+}
+
+.filterInputMobile {
+  composes: sansSerif from "../type.module.css";
+  height: 100vh;
+  margin-top: 2.75rem;
+  padding-top: 1rem;
+}
+
+.filterHeader {
+  font-size: 1.5rem;
+  color: #888;
+  margin-top: 1rem;
+}

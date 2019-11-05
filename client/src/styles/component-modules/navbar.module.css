@@ -4,7 +4,9 @@
   z-index: 6;
   display: flex;
   position: fixed;
+  top: 0;
   width: 100vw;
+  opacity: 0.5;
   justify-content: space-between;
   padding: 0.25rem;
   background-color: var(--gray-darker);

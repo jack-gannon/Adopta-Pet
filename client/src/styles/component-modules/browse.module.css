@@ -1,3 +1,13 @@
+@import "../colors.module.css";
+
+.browseHeader {
+  composes: sansSerif from "../type.module.css";
+  composes: bold from "../type.module.css";
+  composes: h4 from "../type.module.css";
+  margin-top: 4rem;
+  color: var(--gray-darkest);
+}
+
 .browseList {
   composes: sansSerif from "../type.module.css";
 }
