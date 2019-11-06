@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { container } from "../styles/layout.module.css";
 import {
@@ -7,10 +7,9 @@ import {
   browseListItem
 } from "../styles/component-modules/browse.module.css";
 import { CLEAR_PET } from "../actions/types";
-import { Link, Route, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Spinner from "../Components/Spinner";
-import FilterPanel from "../Components/FilterPanel";
-import FilterInputMobile from "../Components/FilterInputMobile";
+import Filter from "../Components/Filter";
 
 const Browse = () => {
   // Application State
@@ -18,16 +17,6 @@ const Browse = () => {
   const pets = useSelector(state => state.pet.pets);
   const loading = useSelector(state => state.load.loading);
 
-  // Component State
-  const [locationFilter, setLocationFilter] = useState("");
-  const [animalType, setAnimalType] = useState("Any");
-
-  const handleLocationChange = e => {
-    setLocationFilter(e.target.value);
-  };
-
-  //Routing
-  const { path } = useRouteMatch();
   return (
     <div className={container}>
       {loading ? (
@@ -35,7 +24,7 @@ const Browse = () => {
       ) : (
         <>
           <h1 className={browseHeader}>Browse Pets</h1>
-          <FilterPanel />
+          <Filter />
           <ul className={browseList}>
             {pets ? (
               pets.map(pet => {

@@ -1,10 +1,20 @@
 import React from "react";
-
-const TextInput = ({ label, id, value, action }) => {
+import { textInput } from "../styles/component-modules/textinput.module.css";
+import { label } from "../styles/type.module.css";
+const TextInput = ({ labelText, id, value, action }) => {
   return (
     <>
-      <label htmlFor={id}>{label}</label> <br />
-      <input type="text" id={id} value={value} onChange={action}></input>
+      <label className={label} htmlFor={id}>
+        {labelText}
+      </label>{" "}
+      <br />
+      <input
+        type="text"
+        id={id}
+        value={value}
+        onChange={action}
+        className={textInput}
+      ></input>
     </>
   );
 };

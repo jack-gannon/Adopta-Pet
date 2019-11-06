@@ -1,5 +1,9 @@
 @import "../colors.module.css";
 
+.filterPage {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
 .filterInput {
   display: flex;
   justify-content: space-between;
@@ -19,13 +23,81 @@
 
 .filterInputMobile {
   composes: sansSerif from "../type.module.css";
-  height: 100vh;
-  margin-top: 2.75rem;
-  padding-top: 1rem;
 }
 
 .filterHeader {
   font-size: 1.5rem;
   color: #888;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.filterGenderSelect {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.filterGenderSelect button {
+  flex-basis: calc(33% - 0.25rem);
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #eaeaea;
+}
+
+.filterOptionsBtn {
+  display: flex;
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #eaeaea;
+}
+
+.filterTypeOptions {
+  max-height: 18rem;
+  overflow-y: scroll;
+  background-color: #eaeaea;
+  margin-bottom: 1rem;
+}
+
+.animalTypeListItem {
+  background-color: #fff;
+
+  border-bottom: 1px solid var(--gray-lighter);
+}
+
+.animalTypeListItem button {
+  display: flex;
+  font-size: 1rem;
+  border: none;
+  padding: 1rem;
+  width: 100%;
+  background-color: transparent;
+}
+
+.filterBackBtn {
+  margin-top: 2rem;
+}
+
+.filterSelectBtn {
+  composes: btn from "../buttons.module.css";
+  composes: btnPrimaryOutline from "../buttons.module.css";
+  width: 100%;
+}
+
+.filterApplyBtn {
+  composes: btn from "../buttons.module.css";
+  composes: btnPrimary from "../buttons.module.css";
+  width: 100%;
+  height: 48px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

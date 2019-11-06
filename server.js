@@ -8,6 +8,7 @@ app.use(express.json({ extended: false }));
 app.get("/", (req, res) => res.send("API Running..."));
 
 app.use("/api/pets", require("./routes/pets"));
+app.use("/api/data", require("./routes/data"));
 
 const PORT = process.env.PORT || 5000;
 
