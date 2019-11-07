@@ -2,6 +2,7 @@ import React from "react";
 import {
   filterHeader,
   filterOptionsBtn,
+  filterOptionsBtnDisabled,
   filterGenderSelect,
   filterApplyBtn,
   filterPage
@@ -35,7 +36,12 @@ const FilterMainMobile = ({
       <br />
       <label className={label}>Breed</label>
       <br />
-      <button className={filterOptionsBtn} onClick={() => handleBreedDisplay()}>
+      <button
+        className={`${filterOptionsBtn} ${
+          typeFilterValue === "Any" ? filterOptionsBtnDisabled : null
+        }`}
+        onClick={typeFilterValue === "Any" ? null : () => handleBreedDisplay()}
+      >
         {breedFilterValue}
       </button>
       <br />

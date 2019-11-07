@@ -34,7 +34,6 @@ const Filter = () => {
             setBreedFilter={setBreedFilter}
           />
         </Modal>
-
         <button className={`${searchToggle}`}>x</button>
       </div>
     </>

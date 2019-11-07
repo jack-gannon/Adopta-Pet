@@ -8,6 +8,7 @@ const FilterInputMobile = ({
   handleLocationChange,
   locationFilterValue,
   typeFilterValue,
+  setTypeFilter,
   breedFilterValue,
   setBreedFilter
 }) => {
@@ -49,6 +50,8 @@ const FilterInputMobile = ({
           <FilterTypeMobile
             handleMainDisplay={handleMainDisplay}
             handleBreedDisplay={handleBreedDisplay}
+            typeFilterValue={typeFilterValue}
+            setTypeFilter={setTypeFilter}
           />
         ) : (
           <FilterBreedMobile
@@ -56,6 +59,7 @@ const FilterInputMobile = ({
             handleMainDisplay={handleMainDisplay}
             breedFilterValue={breedFilterValue}
             setBreedFilter={setBreedFilter}
+            typeFilterValue={typeFilterValue}
           />
         )}
       </div>

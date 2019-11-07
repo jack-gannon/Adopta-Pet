@@ -36,4 +36,19 @@ router.get("/types/:type", async (req, res) => {
     });
 });
 
+// @route   GET api/data/types/type/breeds
+// @desc    Get breeds for pet type
+// @access  Public
+router.get("/types/:type/breeds", async (req, res) => {
+  client.animalData
+    .breeds(req.params.type)
+    .then(response => {
+      res.json(response.data.breeds.map(breed => breed.name));
+    })
+    .catch(error => {
+      console.log(error.message);
+      res.json(error);
+    });
+});
+
 module.exports = router;

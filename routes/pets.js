@@ -6,6 +6,8 @@ const client = new petfinder.Client({
 });
 const router = express.Router();
 
+const formatSearchParams = require("../utils/formatSearchParams");
+
 // @route   GET api/pets
 // @desc    Get pets
 // @access  Public
@@ -21,21 +23,23 @@ router.get("/", async (req, res) => {
     });
 });
 
-// @route   GET api/pets/:params
-// @desc    Get pets based on filter parameters
+// @route   GET api/pets/search/:params
+// @desc    Get pets based on search parameters
 // @access  Public
-router.get("/:params", async (req, res) => {
-  const searchParams = req.params ? { ...req.params } : {};
-  client.animal
-    .search(searchParams)
-    .then(response => {
-      res.json(response.data.animals);
-    })
-    .catch(error => {
-      console.log(error.message);
-      res.json(error);
-    });
-});
+router.get(
+  "/search/:zip.:city.:state.:type.:breed.:gender",
+  async (req, res) => {
+    client.animal
+      .search(formatSearchParams(req.params))
+      .then(response => {
+        res.json(response.data.animals);
+      })
+      .catch(error => {
+        console.log(error.message);
+        res.status(400).send();
+      });
+  }
+);
 
 // @route   GET api/pets/pet/:id
 // @desc    Get pet based on ID

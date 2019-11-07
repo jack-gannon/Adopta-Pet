@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   filterHeader,
   filterBackBtn,
@@ -20,7 +20,16 @@ const animalTypes = [
   { name: "Barnyard" }
 ];
 
-const FilterTypeMobile = ({ handleMainDisplay }) => {
+const FilterTypeMobile = ({
+  handleMainDisplay,
+  typeFilterValue,
+  setTypeFilter
+}) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const handleSelectType = () => {
+    setTypeFilter(selectedItem);
+    handleMainDisplay();
+  };
   return (
     <div className={filterPage}>
       <button className={filterBackBtn} onClick={() => handleMainDisplay()}>
@@ -30,11 +39,19 @@ const FilterTypeMobile = ({ handleMainDisplay }) => {
       <div className={filterTypeOptions}>
         <ul>
           {animalTypes.map(type => (
-            <AnimalTypeItemMobile key={type.name} name={type.name} />
+            <AnimalTypeItemMobile
+              key={type.name}
+              name={type.name}
+              isActive={typeFilterValue === type.name}
+              isSelected={selectedItem === type.name}
+              setSelectedItem={setSelectedItem}
+            />
           ))}
         </ul>
       </div>
-      <button className={filterSelectBtn}>Select</button>
+      <button onClick={() => handleSelectType()} className={filterSelectBtn}>
+        Select
+      </button>
     </div>
   );
 };
