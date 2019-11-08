@@ -7,7 +7,7 @@ import {
 } from "./types";
 import axios from "axios";
 
-//Get all pets
+// Get all pets
 export const getPets = () => async dispatch => {
   dispatch({ type: SET_LOADING });
   try {
@@ -27,7 +27,7 @@ export const getPets = () => async dispatch => {
   }
 };
 
-//Get single pet based on ID
+// Get single pet based on ID
 export const getPet = id => async dispatch => {
   dispatch({ type: SET_LOADING });
   try {

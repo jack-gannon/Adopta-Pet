@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_TYPE_FILTER, SET_BREED_FILTER } from "../actions/types";
+import { setAvailableBreeds } from "../actions/filter";
 import {
   filterHeader,
   filterBackBtn,
@@ -25,9 +28,18 @@ const FilterTypeMobile = ({
   typeFilterValue,
   setTypeFilter
 }) => {
+  // Application State
+  const typeFilter = useSelector(state => state.filter.type);
+  const dispatch = useDispatch();
+
+  // Component State
   const [selectedItem, setSelectedItem] = useState(null);
   const handleSelectType = () => {
-    setTypeFilter(selectedItem);
+    dispatch({ type: SET_TYPE_FILTER, payload: selectedItem });
+    dispatch({ type: SET_BREED_FILTER, payload: "Any" });
+    if (selectedItem !== "Any") {
+      dispatch(setAvailableBreeds(selectedItem));
+    }
     handleMainDisplay();
   };
   return (
@@ -42,7 +54,7 @@ const FilterTypeMobile = ({
             <AnimalTypeItemMobile
               key={type.name}
               name={type.name}
-              isActive={typeFilterValue === type.name}
+              isActive={typeFilter === type.name}
               isSelected={selectedItem === type.name}
               setSelectedItem={setSelectedItem}
             />

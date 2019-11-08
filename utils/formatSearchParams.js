@@ -2,11 +2,12 @@ const formatSearchParams = oldParams => {
   let newParams = { ...oldParams };
   let keys = Object.keys(newParams);
 
-  keys.forEach(
-    key =>
-      newParams[key] === "null"
-        ? delete newParams[key] // Remove all parameters that weren't included
-        : (newParams[key] = newParams[key].replace(/_/g, " ")) // Format multi-word params
+  keys.forEach(key =>
+    newParams[key] === "null"
+      ? delete newParams[key] // Remove all parameters that weren't included
+      : (newParams[key] = newParams[key] // Format multi-word params & slashes
+          .replace(/_/g, " ")
+          .replace(/-/g, "/"))
   );
 
   newParams.location = "";

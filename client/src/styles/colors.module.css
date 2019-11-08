@@ -47,7 +47,12 @@
   --gray-darker: #555f61;
   --gray-darkest: #373d3f;
 
+  /* ---------- Shadows ---------- */
+
   --shadow-1: rgba(111, 124, 128, 0.15);
   --shadow-2: rgba(0, 0, 0, 0.35);
   --shadow-primary: rgba(104, 85, 156, 0.65);
+
+  /* ---------- Gradients ---------- */
+  --gradient-primary: linear-gradient(#68559c, #563d99);
 }

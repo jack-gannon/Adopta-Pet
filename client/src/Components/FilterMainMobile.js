@@ -1,23 +1,31 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { SET_GENDER_FILTER } from "../actions/types.js";
 import {
   filterHeader,
   filterOptionsBtn,
   filterOptionsBtnDisabled,
   filterGenderSelect,
+  filterGenderBtnActive,
+  filterGenderBtnInactive,
   filterApplyBtn,
   filterPage
 } from "../styles/component-modules/filter.module.css";
 import TextInput from "./TextInput";
 import { label } from "../styles/type.module.css";
+import FilterOptionsButtonMobile from "./FilterOptionsButtonMobile";
+import FilterGenderRadioBtnMobile from "./FilterGenderRadioBtnMobile";
 
 const FilterMainMobile = ({
   handleLocationChange,
   locationFilterValue,
-  typeFilterValue,
-  breedFilterValue,
+  typeFilter,
+  breedFilter,
+  genderFilter,
   handleTypeDisplay,
   handleBreedDisplay
 }) => {
+  const dispatch = useDispatch();
   return (
     <div className={filterPage}>
       <h4 className={filterHeader}>Filter Pets</h4>
@@ -30,26 +38,34 @@ const FilterMainMobile = ({
       <br />
       <label className={label}>Animal Type</label>
       <br />
-      <button className={filterOptionsBtn} onClick={() => handleTypeDisplay()}>
-        {typeFilterValue}
-      </button>
+      <FilterOptionsButtonMobile
+        isDisabled={false}
+        action={() => handleTypeDisplay()}
+        value={typeFilter}
+      />
       <br />
       <label className={label}>Breed</label>
       <br />
-      <button
-        className={`${filterOptionsBtn} ${
-          typeFilterValue === "Any" ? filterOptionsBtnDisabled : null
-        }`}
-        onClick={typeFilterValue === "Any" ? null : () => handleBreedDisplay()}
-      >
-        {breedFilterValue}
-      </button>
+      <FilterOptionsButtonMobile
+        isDisabled={typeFilter === "Any"}
+        action={() => handleBreedDisplay()}
+        value={breedFilter}
+      />
       <br />
       <label className={label}>Gender</label>
       <div className={filterGenderSelect}>
-        <button>All</button>
-        <button>Male</button>
-        <button>Female</button>
+        <FilterGenderRadioBtnMobile
+          isActive={genderFilter === "All"}
+          value={"All"}
+        />
+        <FilterGenderRadioBtnMobile
+          isActive={genderFilter === "Male"}
+          value={"Male"}
+        />
+        <FilterGenderRadioBtnMobile
+          isActive={genderFilter === "Female"}
+          value={"Female"}
+        />
       </div>
       <br />
       <button className={filterApplyBtn}>Apply Filter</button>

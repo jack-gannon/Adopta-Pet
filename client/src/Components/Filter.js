@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { SET_LOCATION_FILTER } from "../actions/types";
 import {
   filterInput,
   filterToggle,
@@ -6,17 +8,20 @@ import {
 } from "../styles/component-modules/filter.module.css";
 import { btn, btnPrimaryOutline } from "../styles/buttons.module.css";
 import Modal from "./Modal";
-import FilterInputMobile from "./FilterInputMobile";
+import FilterMenuMobile from "./FilterMenuMobile";
 
 const Filter = () => {
-  // Component State
-  const [locationFilterValue, setLocationFilter] = useState("");
-  const [typeFilterValue, setTypeFilter] = useState("Any");
-  const [breedFilterValue, setBreedFilter] = useState("Any");
+  // Application State
+  const typeFilter = useSelector(state => state.filter.type);
+  const breedFilter = useSelector(state => state.filter.breed);
+  const locationFilter = useSelector(state => state.filter.location);
+  const genderFilter = useSelector(state => state.filter.gender);
+  const dispatch = useDispatch();
 
   const handleLocationChange = e => {
-    setLocationFilter(e.target.value);
+    dispatch({ type: SET_LOCATION_FILTER, payload: e.target.value });
   };
+
   return (
     <>
       <div className={filterInput}>
@@ -24,14 +29,12 @@ const Filter = () => {
           toggleText="Filter"
           toggleStyles={`${btn} ${btnPrimaryOutline} ${filterToggle}`}
         >
-          <FilterInputMobile
-            locationFilterValue={locationFilterValue}
-            setLocationFilter={setLocationFilter}
+          <FilterMenuMobile
             handleLocationChange={handleLocationChange}
-            typeFilterValue={typeFilterValue}
-            setTypeFilter={setTypeFilter}
-            breedFilterValue={breedFilterValue}
-            setBreedFilter={setBreedFilter}
+            locationFilter={locationFilter}
+            typeFilter={typeFilter}
+            breedFilter={breedFilter}
+            genderFilter={genderFilter}
           />
         </Modal>
         <button className={`${searchToggle}`}>x</button>

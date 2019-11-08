@@ -16,8 +16,7 @@ router.get("/types", async (req, res) => {
       res.json(response.data.types.map(type => type.name));
     })
     .catch(error => {
-      console.log(error.message);
-      res.json(error);
+      res.status(400).send(error);
     });
 });
 
@@ -31,8 +30,7 @@ router.get("/types/:type", async (req, res) => {
       res.json(response.data.type);
     })
     .catch(error => {
-      console.log(error.message);
-      res.json(error);
+      res.status(400).send(error);
     });
 });
 
@@ -46,8 +44,7 @@ router.get("/types/:type/breeds", async (req, res) => {
       res.json(response.data.breeds.map(breed => breed.name));
     })
     .catch(error => {
-      console.log(error.message);
-      res.json(error);
+      res.status(400).send(error);
     });
 });
 

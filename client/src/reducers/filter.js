@@ -2,14 +2,16 @@ import {
   SET_LOCATION_FILTER,
   SET_TYPE_FILTER,
   SET_BREED_FILTER,
-  SET_GENDER_FILTER
+  SET_GENDER_FILTER,
+  SET_AVAILABLE_BREEDS
 } from "../actions/types";
 
 const initialState = {
   location: null,
-  type: null,
-  breed: null,
-  gender: null
+  type: "Any",
+  breed: "Any",
+  gender: "All",
+  availableBreeds: []
 };
 
 export default function filterReducer(state = initialState, action) {
@@ -22,6 +24,8 @@ export default function filterReducer(state = initialState, action) {
       return { ...state, breed: action.payload };
     case SET_GENDER_FILTER:
       return { ...state, gender: action.payload };
+    case SET_AVAILABLE_BREEDS:
+      return { ...state, availableBreeds: action.payload };
     default:
       return state;
   }
