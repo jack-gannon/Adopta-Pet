@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_LOCATION_FILTER } from "../actions/types";
 import {
@@ -18,6 +18,16 @@ const Filter = () => {
   const genderFilter = useSelector(state => state.filter.gender);
   const dispatch = useDispatch();
 
+  //Filter object that is sent in search request
+  const filterObject = {
+    zip: "85018",
+    state: null,
+    city: null,
+    type: typeFilter,
+    breed: breedFilter,
+    gender: genderFilter
+  };
+
   const handleLocationChange = e => {
     dispatch({ type: SET_LOCATION_FILTER, payload: e.target.value });
   };
@@ -26,6 +36,7 @@ const Filter = () => {
     <>
       <div className={filterInput}>
         <Modal
+          defaultOpen={false}
           toggleText="Filter"
           toggleStyles={`${btn} ${btnPrimaryOutline} ${filterToggle}`}
         >
@@ -35,6 +46,7 @@ const Filter = () => {
             typeFilter={typeFilter}
             breedFilter={breedFilter}
             genderFilter={genderFilter}
+            filterObject={filterObject}
           />
         </Modal>
         <button className={`${searchToggle}`}>x</button>

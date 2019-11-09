@@ -4,6 +4,7 @@ import FilterMainMobile from "./FilterMainMobile";
 import FilterTypeMobile from "./FilterTypeMobile";
 import FilterBreedMobile from "./FilterBreedMobile";
 
+// Controls which mobile filter page to display
 const FilterMenuMobile = ({
   handleLocationChange,
   locationFilterValue,
@@ -11,7 +12,8 @@ const FilterMenuMobile = ({
   setTypeFilter,
   breedFilter,
   setBreedFilter,
-  genderFilter
+  genderFilter,
+  filterObject
 }) => {
   // Compoonent State
   const [displayMainOptions, setDisplayMainOptions] = useState(true);
@@ -22,18 +24,21 @@ const FilterMenuMobile = ({
   const handleMainDisplay = () => {
     setDisplayMainOptions(true);
     setDisplayTypeOptions(false);
+    setDisplayBreedOptions(false);
   };
 
   // Renders the Animal Type Options Component
   const handleTypeDisplay = () => {
     setDisplayMainOptions(false);
     setDisplayTypeOptions(true);
+    setDisplayBreedOptions(false);
   };
 
   // Renders the Animal Breed Options Component
   const handleBreedDisplay = () => {
     setDisplayMainOptions(false);
     setDisplayTypeOptions(false);
+    setDisplayBreedOptions(true);
   };
 
   return (
@@ -48,6 +53,7 @@ const FilterMenuMobile = ({
             genderFilter={genderFilter}
             handleTypeDisplay={handleTypeDisplay}
             handleBreedDisplay={handleBreedDisplay}
+            filterObject={filterObject}
           />
         ) : displayTypeOptions ? (
           <FilterTypeMobile
@@ -56,7 +62,7 @@ const FilterMenuMobile = ({
             typeFilter={typeFilter}
             setTypeFilter={setTypeFilter}
           />
-        ) : (
+        ) : displayBreedOptions ? (
           <FilterBreedMobile
             handleTypeDisplay={handleTypeDisplay}
             handleMainDisplay={handleMainDisplay}
@@ -64,7 +70,7 @@ const FilterMenuMobile = ({
             setBreedFilter={setBreedFilter}
             typeFilter={typeFilter}
           />
-        )}
+        ) : null}
       </div>
     </>
   );

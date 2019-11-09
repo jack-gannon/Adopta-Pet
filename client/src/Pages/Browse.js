@@ -34,7 +34,8 @@ const Browse = () => {
                       to={`/pet/${pet.id}`}
                       onClick={() => dispatch({ type: CLEAR_PET })}
                     >
-                      {pet.name}
+                      {pet.name} | {pet.type} | {pet.gender} |{" "}
+                      {pet.breeds.primary} | {pet.contact.address.state}
                     </Link>
                   </li>
                 );

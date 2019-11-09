@@ -1,13 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { SET_GENDER_FILTER } from "../actions/types.js";
+import { getPetsWithFilter } from "../actions/pets";
 import {
   filterHeader,
-  filterOptionsBtn,
-  filterOptionsBtnDisabled,
   filterGenderSelect,
-  filterGenderBtnActive,
-  filterGenderBtnInactive,
   filterApplyBtn,
   filterPage
 } from "../styles/component-modules/filter.module.css";
@@ -23,9 +19,13 @@ const FilterMainMobile = ({
   breedFilter,
   genderFilter,
   handleTypeDisplay,
-  handleBreedDisplay
+  handleBreedDisplay,
+  filterObject
 }) => {
   const dispatch = useDispatch();
+  const handleApplyFilter = () => {
+    dispatch(getPetsWithFilter(filterObject));
+  };
   return (
     <div className={filterPage}>
       <h4 className={filterHeader}>Filter Pets</h4>
@@ -68,7 +68,9 @@ const FilterMainMobile = ({
         />
       </div>
       <br />
-      <button className={filterApplyBtn}>Apply Filter</button>
+      <button onClick={() => handleApplyFilter()} className={filterApplyBtn}>
+        Apply Filter
+      </button>
     </div>
   );
 };

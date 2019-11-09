@@ -3,25 +3,13 @@ const formatSearchParams = oldParams => {
   let keys = Object.keys(newParams);
 
   keys.forEach(key =>
-    newParams[key] === "null"
+    newParams[key] === "Any" || newParams[key] === "All"
       ? delete newParams[key] // Remove all parameters that weren't included
       : (newParams[key] = newParams[key] // Format multi-word params & slashes
           .replace(/_/g, " ")
           .replace(/-/g, "/"))
   );
 
-  newParams.location = "";
-  let { zip, city, state } = newParams;
-
-  // If zip-code wasn't provided, set location to city and/or state.
-  zip
-    ? (newParams.location = zip) // Zip
-    : city
-    ? (newParams.location = `${city}, ${state}`) // City, State
-    : (newParams.location = state); // State
-  delete newParams.zip;
-  delete newParams.city;
-  delete newParams.state;
   return newParams;
 };
 

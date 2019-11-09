@@ -23,23 +23,22 @@ router.get("/", async (req, res) => {
     });
 });
 
-// @route   GET api/pets/search/:params
+// @route   GET api/pets/search/:zip.:city.:state.:type.:breed.:gender
 // @desc    Get pets based on search parameters
 // @access  Public
-router.get(
-  "/search/:zip.:city.:state.:type.:breed.:gender",
-  async (req, res) => {
-    client.animal
-      .search(formatSearchParams(req.params))
-      .then(response => {
-        res.json(response.data.animals);
-      })
-      .catch(error => {
-        console.log(error.message);
-        res.status(400).send();
-      });
-  }
-);
+router.get("/search/:location.:type.:breed.:gender", async (req, res) => {
+  client.animal
+    .search(formatSearchParams(req.params))
+    .then(response => {
+      console.log("search request:", formatSearchParams(req.params));
+      res.json(response.data.animals);
+    })
+    .catch(error => {
+      console.log("BAD search request:", formatSearchParams(req.params));
+      console.log(error.message);
+      res.status(400).send(error.message);
+    });
+});
 
 // @route   GET api/pets/pet/:id
 // @desc    Get pet based on ID

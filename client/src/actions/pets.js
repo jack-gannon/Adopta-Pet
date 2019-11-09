@@ -6,6 +6,7 @@ import {
   SET_LOADING
 } from "./types";
 import axios from "axios";
+import { formatSearchFilter } from "../utils/formatSearchFilter";
 
 // Get all pets
 export const getPets = () => async dispatch => {
@@ -25,6 +26,23 @@ export const getPets = () => async dispatch => {
     });
     dispatch({ type: LOAD_COMPLETE });
   }
+};
+
+// Get pets with filter
+export const getPetsWithFilter = filter => async dispatch => {
+  dispatch({ type: SET_LOADING });
+  const { location, type, breed, gender } = formatSearchFilter({
+    filter
+  });
+  try {
+    const res = await axios.get(
+      `/api/pets/search/${location}.${type}.${breed}.${gender}`
+    );
+    dispatch({ type: GET_PETS, payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+  dispatch({ type: LOAD_COMPLETE });
 };
 
 // Get single pet based on ID
