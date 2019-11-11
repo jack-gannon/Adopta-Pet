@@ -16,35 +16,27 @@ const FilterMenuMobile = ({
   filterObject
 }) => {
   // Compoonent State
-  const [displayMainOptions, setDisplayMainOptions] = useState(true);
-  const [displayTypeOptions, setDisplayTypeOptions] = useState(false);
-  const [displayBreedOptions, setDisplayBreedOptions] = useState(false);
+  const [displayOptions, setDisplayOptions] = useState("main");
 
   // Renders the Main Options Component
   const handleMainDisplay = () => {
-    setDisplayMainOptions(true);
-    setDisplayTypeOptions(false);
-    setDisplayBreedOptions(false);
+    setDisplayOptions("main");
   };
 
   // Renders the Animal Type Options Component
   const handleTypeDisplay = () => {
-    setDisplayMainOptions(false);
-    setDisplayTypeOptions(true);
-    setDisplayBreedOptions(false);
+    setDisplayOptions("type");
   };
 
   // Renders the Animal Breed Options Component
   const handleBreedDisplay = () => {
-    setDisplayMainOptions(false);
-    setDisplayTypeOptions(false);
-    setDisplayBreedOptions(true);
+    setDisplayOptions("breed");
   };
 
   return (
     <>
       <div className={filterInputMobile}>
-        {displayMainOptions ? (
+        {displayOptions === "main" ? (
           <FilterMainMobile
             handleLocationChange={handleLocationChange}
             locationFilterValue={locationFilterValue}
@@ -55,14 +47,14 @@ const FilterMenuMobile = ({
             handleBreedDisplay={handleBreedDisplay}
             filterObject={filterObject}
           />
-        ) : displayTypeOptions ? (
+        ) : displayOptions === "type" ? (
           <FilterTypeMobile
             handleMainDisplay={handleMainDisplay}
             handleBreedDisplay={handleBreedDisplay}
             typeFilter={typeFilter}
             setTypeFilter={setTypeFilter}
           />
-        ) : displayBreedOptions ? (
+        ) : displayOptions === "breed" ? (
           <FilterBreedMobile
             handleTypeDisplay={handleTypeDisplay}
             handleMainDisplay={handleMainDisplay}
