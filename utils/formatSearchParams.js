@@ -2,8 +2,13 @@ const formatSearchParams = oldParams => {
   let newParams = { ...oldParams };
   let keys = Object.keys(newParams);
 
+  // Get page number from search pararms
+  newParams.page = oldParams.page;
+
   keys.forEach(key =>
-    newParams[key] === "Any" || newParams[key] === "All"
+    newParams[key] === "Any" ||
+    newParams[key] === "All" ||
+    newParams[key] === "Everywhere"
       ? delete newParams[key] // Remove all parameters that weren't included
       : (newParams[key] = newParams[key] // Format multi-word params & slashes
           .replace(/_/g, " ")

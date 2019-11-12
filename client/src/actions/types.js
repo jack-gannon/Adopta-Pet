@@ -13,3 +13,5 @@ export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const SET_LOADING = "SET_LOADING";
 export const LOAD_COMPLETE = "LOAD_COMPLETE";
+export const NEXT_PAGE = "NEXT_PAGE";
+export const PREVIOUS_PAGE = "PREVIOUS_PAGE";

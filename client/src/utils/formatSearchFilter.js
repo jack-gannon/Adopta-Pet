@@ -20,7 +20,6 @@ export const formatSearchFilter = filterObject => {
       ? delete newObject[key]
       : (newObject[key] = newObject[key].replace(/\s/g, "_").replace(/\//, "&"))
   );
-  console.log(newObject);
   return newObject;
 };
 

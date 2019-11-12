@@ -29,15 +29,16 @@ export const getPets = () => async dispatch => {
 };
 
 // Get pets with filter
-export const getPetsWithFilter = filter => async dispatch => {
+export const getPetsWithFilter = (filter, currentPage) => async dispatch => {
   dispatch({ type: SET_LOADING });
   const { location, type, breed, gender } = formatSearchFilter({
     filter
   });
   try {
     const res = await axios.get(
-      `/api/pets/search/${location}.${type}.${breed}.${gender}`
+      `/api/pets/search/${location}.${type}.${breed}.${gender}/${currentPage}`
     );
+    console.log(currentPage + " is the requested page");
     dispatch({ type: GET_PETS, payload: res.data });
   } catch (error) {
     console.log(error);

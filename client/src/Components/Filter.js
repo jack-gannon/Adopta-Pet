@@ -9,8 +9,9 @@ import {
 import { btn, btnPrimaryOutline } from "../styles/buttons.module.css";
 import Modal from "./Modal";
 import FilterMenuMobile from "./FilterMenuMobile";
+import Pagination from "./Pagination";
 
-const Filter = () => {
+const Filter = ({ currentPage, filterObject }) => {
   // Application State
   const typeFilter = useSelector(state => state.filter.type);
   const breedFilter = useSelector(state => state.filter.breed);
@@ -19,14 +20,6 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   //Filter object that is sent in search request
-  const filterObject = {
-    zip: "85018",
-    state: null,
-    city: null,
-    type: typeFilter,
-    breed: breedFilter,
-    gender: genderFilter
-  };
 
   const handleLocationChange = e => {
     dispatch({ type: SET_LOCATION_FILTER, payload: e.target.value });
@@ -47,10 +40,12 @@ const Filter = () => {
             breedFilter={breedFilter}
             genderFilter={genderFilter}
             filterObject={filterObject}
+            currentPage={currentPage}
           />
         </Modal>
         <button className={`${searchToggle}`}>x</button>
       </div>
+      <Pagination currentPage={currentPage} filterObject={filterObject} />
     </>
   );
 };

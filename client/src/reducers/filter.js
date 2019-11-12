@@ -7,7 +7,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  location: null,
+  location: "Everywhere",
   type: "Any",
   breed: "Any",
   gender: "All",

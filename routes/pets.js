@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
 // @route   GET api/pets/search/:zip.:city.:state.:type.:breed.:gender
 // @desc    Get pets based on search parameters
 // @access  Public
-router.get("/search/:location.:type.:breed.:gender", async (req, res) => {
+router.get("/search/:location.:type.:breed.:gender/:page", async (req, res) => {
   client.animal
     .search(formatSearchParams(req.params))
     .then(response => {

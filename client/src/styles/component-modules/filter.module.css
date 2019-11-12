@@ -194,6 +194,56 @@
   overflow-y: scroll;
 }
 
+.filterLocationRadioOptions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterLocationRadio {
+  position: relative;
+  flex-basis: 33%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: transparent;
+  border: none;
+}
+
+.filterLocationRadio svg {
+  position: absolute;
+  left: -4px;
+  top: 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.filterLocationRadio svg circle {
+  fill: none;
+  stroke-width: 8px;
+}
+
+.filterLocationRadioActive {
+  color: var(--primary);
+}
+
+.filterLocationRadioActive svg circle {
+  stroke: var(--primary);
+}
+
+.filterLocationRadioActive .filterRadioInnerCircle {
+  fill: var(--primary);
+  stroke: none;
+}
+
+.filterLocationRadioInactive {
+  color: var(--gray-dark);
+}
+
+.filterLocationRadioInactive svg circle {
+  stroke: var(--gray-dark);
+}
+
 .filterBackBtn {
   margin-top: 2rem;
 }

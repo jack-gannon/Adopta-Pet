@@ -34,13 +34,15 @@ const FilterTypeMobile = ({
 
   // Component State
   const [selectedItem, setSelectedItem] = useState(null);
+
+  // Merge Component State into Application State
   const handleSelectType = () => {
     dispatch({ type: SET_TYPE_FILTER, payload: selectedItem });
     dispatch({ type: SET_BREED_FILTER, payload: "Any" });
     if (selectedItem !== "Any") {
       dispatch(setAvailableBreeds(selectedItem));
     }
-    handleMainDisplay();
+    handleMainDisplay(); // Return to main menu page
   };
   return (
     <div className={filterPage}>

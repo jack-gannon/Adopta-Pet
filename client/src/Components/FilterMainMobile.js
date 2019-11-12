@@ -7,33 +7,35 @@ import {
   filterApplyBtn,
   filterPage
 } from "../styles/component-modules/filter.module.css";
-import TextInput from "./TextInput";
+
 import { label } from "../styles/type.module.css";
 import FilterOptionsButtonMobile from "./FilterOptionsButtonMobile";
 import FilterGenderRadioBtnMobile from "./FilterGenderRadioBtnMobile";
 
 const FilterMainMobile = ({
   handleLocationChange,
-  locationFilterValue,
+  locationFilter,
   typeFilter,
   breedFilter,
   genderFilter,
+  handleLocationDisplay,
   handleTypeDisplay,
   handleBreedDisplay,
-  filterObject
+  filterObject,
+  currentPage
 }) => {
   const dispatch = useDispatch();
   const handleApplyFilter = () => {
-    dispatch(getPetsWithFilter(filterObject));
+    dispatch(getPetsWithFilter(filterObject, currentPage));
   };
   return (
     <div className={filterPage}>
       <h4 className={filterHeader}>Filter Pets</h4>
-      <TextInput
-        labelText="Location"
-        id="location"
-        value={locationFilterValue}
-        action={handleLocationChange}
+      <label className={label}>Location</label>
+      <FilterOptionsButtonMobile
+        isDisabled={false}
+        action={() => handleLocationDisplay()}
+        value={locationFilter}
       />
       <br />
       <label className={label}>Animal Type</label>

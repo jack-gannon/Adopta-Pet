@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { filterInputMobile } from "../styles/component-modules/filter.module.css";
 import FilterMainMobile from "./FilterMainMobile";
+import FilterLocationMobile from "./FilterLocationMobile";
 import FilterTypeMobile from "./FilterTypeMobile";
 import FilterBreedMobile from "./FilterBreedMobile";
 
 // Controls which mobile filter page to display
 const FilterMenuMobile = ({
   handleLocationChange,
-  locationFilterValue,
+  locationFilter,
   typeFilter,
   setTypeFilter,
   breedFilter,
   setBreedFilter,
   genderFilter,
-  filterObject
+  filterObject,
+  currentPage
 }) => {
   // Compoonent State
   const [displayOptions, setDisplayOptions] = useState("main");
@@ -21,6 +23,11 @@ const FilterMenuMobile = ({
   // Renders the Main Options Component
   const handleMainDisplay = () => {
     setDisplayOptions("main");
+  };
+
+  // Renders the Location Options Component
+  const handleLocationDisplay = () => {
+    setDisplayOptions("location");
   };
 
   // Renders the Animal Type Options Component
@@ -39,13 +46,22 @@ const FilterMenuMobile = ({
         {displayOptions === "main" ? (
           <FilterMainMobile
             handleLocationChange={handleLocationChange}
-            locationFilterValue={locationFilterValue}
+            locationFilter={locationFilter}
             typeFilter={typeFilter}
             breedFilter={breedFilter}
             genderFilter={genderFilter}
+            handleLocationDisplay={handleLocationDisplay}
             handleTypeDisplay={handleTypeDisplay}
             handleBreedDisplay={handleBreedDisplay}
             filterObject={filterObject}
+            currentPage={currentPage}
+          />
+        ) : displayOptions === "location" ? (
+          <FilterLocationMobile
+            handleMainDisplay={handleMainDisplay}
+            handleBreedDisplay={handleBreedDisplay}
+            typeFilter={typeFilter}
+            setTypeFilter={setTypeFilter}
           />
         ) : displayOptions === "type" ? (
           <FilterTypeMobile
