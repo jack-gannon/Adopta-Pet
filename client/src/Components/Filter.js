@@ -11,16 +11,17 @@ import Modal from "./Modal";
 import FilterMenuMobile from "./FilterMenuMobile";
 import Pagination from "./Pagination";
 
-const Filter = ({ currentPage, filterObject }) => {
-  // Application State
-  const typeFilter = useSelector(state => state.filter.type);
-  const breedFilter = useSelector(state => state.filter.breed);
-  const locationFilter = useSelector(state => state.filter.location);
-  const genderFilter = useSelector(state => state.filter.gender);
+const Filter = ({
+  currentPage,
+  filterObject,
+  locationFilter,
+  typeFilter,
+  breedFilter,
+  genderFilter
+}) => {
   const dispatch = useDispatch();
 
   //Filter object that is sent in search request
-
   const handleLocationChange = e => {
     dispatch({ type: SET_LOCATION_FILTER, payload: e.target.value });
   };

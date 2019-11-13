@@ -2,6 +2,8 @@ import {
   GET_PETS,
   GET_PET,
   GET_PETS_ERROR,
+  SET_PETS_LOADING,
+  PETS_LOAD_COMPLETE,
   LOAD_COMPLETE,
   SET_LOADING
 } from "./types";
@@ -30,7 +32,7 @@ export const getPets = () => async dispatch => {
 
 // Get pets with filter
 export const getPetsWithFilter = (filter, currentPage) => async dispatch => {
-  dispatch({ type: SET_LOADING });
+  dispatch({ type: SET_PETS_LOADING });
   const { location, type, breed, gender } = formatSearchFilter({
     filter
   });
@@ -43,7 +45,7 @@ export const getPetsWithFilter = (filter, currentPage) => async dispatch => {
   } catch (error) {
     console.log(error);
   }
-  dispatch({ type: LOAD_COMPLETE });
+  dispatch({ type: PETS_LOAD_COMPLETE });
 };
 
 // Get single pet based on ID
