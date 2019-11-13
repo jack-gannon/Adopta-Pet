@@ -41,7 +41,10 @@ export const getPetsWithFilter = (filter, currentPage) => async dispatch => {
       `/api/pets/search/${location}.${type}.${breed}.${gender}/${currentPage}`
     );
     console.log(currentPage + " is the requested page");
-    dispatch({ type: GET_PETS, payload: res.data });
+    dispatch({
+      type: GET_PETS,
+      payload: res.data
+    });
   } catch (error) {
     console.log(error);
   }

@@ -10,10 +10,10 @@ const PaginationMobile = ({
   return (
     <div className={paginationMobile}>
       <button onClick={isFirstPage ? null : () => handlePreviousPage()}>
-        Previous
+        &larr;
       </button>
       <p>{currentPage}</p>
-      <button onClick={() => handleNextPage()}>Next</button>
+      <button onClick={() => handleNextPage()}>&rarr;</button>
     </div>
   );
 };

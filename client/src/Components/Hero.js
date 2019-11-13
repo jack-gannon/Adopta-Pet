@@ -14,7 +14,6 @@ import {
 } from "../styles/buttons.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getPets } from "../actions/pets";
 
 const Hero = () => {
   const dispatch = useDispatch();
@@ -28,7 +27,6 @@ const Hero = () => {
           </p>
           <Link
             to="/browse"
-            onClick={() => dispatch(getPets())}
             className={`${btn} ${btnLarge} ${btnPrimary} ${btnRound}`}
           >
             Browse Pets
