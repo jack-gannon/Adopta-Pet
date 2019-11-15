@@ -24,6 +24,9 @@ const ResultsListItem = ({ pet }) => {
       <Link to={`/pet/${pet.id}`} onClick={() => dispatch({ type: CLEAR_PET })}>
         <p className={resultsListName}>{formatAnimalName(name, 12)}</p>
       </Link>
+      <p className={resultsListValue}>
+        {contact.address.city}, {contact.address.state}
+      </p>
     </li>
   );
 };

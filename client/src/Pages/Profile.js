@@ -12,6 +12,7 @@ const Profile = () => {
   const pet = useSelector(state => state.pet.activePet);
   useEffect(() => {
     dispatch(getPet(id));
+    console.log(pet);
   }, [dispatch, id]);
   return (
     <div>

@@ -4,7 +4,7 @@ import ResultsGrid from "./ResultsGrid";
 import ResultsList from "./ResultsList";
 
 const Results = ({ pets }) => {
-  const [displayType, setDisplayType] = useState("list");
+  const [displayType, setDisplayType] = useState("grid");
 
   return (
     <>

@@ -7,7 +7,7 @@ import horse from "../img/placeholder_horse.png";
 import barnyard from "../img/placeholder_barnyard.png";
 import scalesFinsOther from "../img/placeholder_scales.png";
 
-const Placeholder = ({ type, name }) => {
+const Placeholder = ({ type, name, className }) => {
   let typeSource = "";
 
   if (type === "Dog") {
@@ -26,7 +26,9 @@ const Placeholder = ({ type, name }) => {
     typeSource = scalesFinsOther;
   }
 
-  return <img src={typeSource} alt={`${name} the ${type}`} />;
+  return (
+    <img src={typeSource} alt={`${name} the ${type}`} className={className} />
+  );
 };
 
 export default Placeholder;
