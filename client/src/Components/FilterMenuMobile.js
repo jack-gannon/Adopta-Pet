@@ -15,7 +15,8 @@ const FilterMenuMobile = ({
   setBreedFilter,
   genderFilter,
   filterObject,
-  currentPage
+  currentPage,
+  toggleOpen
 }) => {
   // Compoonent State
   const [displayOptions, setDisplayOptions] = useState("main");
@@ -55,6 +56,7 @@ const FilterMenuMobile = ({
             handleBreedDisplay={handleBreedDisplay}
             filterObject={filterObject}
             currentPage={currentPage}
+            toggleOpen={toggleOpen}
           />
         ) : displayOptions === "location" ? (
           <FilterLocationMobile

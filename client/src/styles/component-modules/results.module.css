@@ -108,6 +108,7 @@
   composes: sansSerif from "../type.module.css";
   color: var(--gray-medium);
   font-size: 0.75rem;
+  letter-spacing: 0.025rem;
 }
 
 /* ------------- LIST VIEW --------------- */

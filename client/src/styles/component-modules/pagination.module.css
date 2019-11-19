@@ -1,4 +1,24 @@
+@import "../colors.module.css";
+
 .paginationMobile {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0rem;
+}
+
+.pageBtn {
+  padding: 0.5rem;
+  color: var(--gray-dark);
+  border: 1px solid;
+  border-color: var(--gray-dark);
+  background-color: transparent;
+  border-radius: 4px;
+  height: 2rem;
+  width: 2rem;
+}
+
+.pageBtnDisabled {
+  color: var(--gray-light);
+  border-color: var(--gray-light);
 }

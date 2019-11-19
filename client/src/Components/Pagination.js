@@ -7,6 +7,7 @@ import { getPetsWithFilter } from "../actions/pets";
 
 const Pagination = ({ filterObject, currentPage }) => {
   const dispatch = useDispatch();
+  const pageCount = useSelector(state => state.page.pageCount);
   const handleNextPage = () => {
     dispatch({ type: NEXT_PAGE });
   };
@@ -20,6 +21,8 @@ const Pagination = ({ filterObject, currentPage }) => {
         handleNextPage={handleNextPage}
         handlePreviousPage={handlePreviousPage}
         isFirstPage={currentPage === 1}
+        isLastPage={currentPage === pageCount}
+        pageCount={pageCount}
       />
       <PaginationDesktop currentPage={currentPage} />
     </>

@@ -4,6 +4,7 @@ import cat from "../img/placeholder_cat.png";
 import bird from "../img/placeholder_bird.png";
 import rabbit from "../img/placeholder_rabbit.png";
 import horse from "../img/placeholder_horse.png";
+import furry from "../img/placeholder_furry.png";
 import barnyard from "../img/placeholder_barnyard.png";
 import scalesFinsOther from "../img/placeholder_scales.png";
 
@@ -22,6 +23,8 @@ const Placeholder = ({ type, name, className }) => {
     typeSource = horse;
   } else if (type === "Barnyard") {
     typeSource = barnyard;
+  } else if (type === "Small & Furry") {
+    typeSource = furry;
   } else {
     typeSource = scalesFinsOther;
   }

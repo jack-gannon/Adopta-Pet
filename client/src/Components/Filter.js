@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_LOCATION_FILTER } from "../actions/types";
 import {
@@ -21,7 +21,12 @@ const Filter = ({
 }) => {
   const dispatch = useDispatch();
 
-  //Filter object that is sent in search request
+  // Filter Modal State
+  const [isOpen, setOpen] = useState(false);
+  const toggleOpen = () => {
+    setOpen(!isOpen);
+  };
+
   const handleLocationChange = e => {
     dispatch({ type: SET_LOCATION_FILTER, payload: e.target.value });
   };
@@ -33,6 +38,9 @@ const Filter = ({
           defaultOpen={false}
           toggleText="Filter"
           toggleStyles={`${btn} ${btnPrimaryOutline} ${filterToggle}`}
+          isOpen={isOpen}
+          setOpen={setOpen}
+          toggleOpen={toggleOpen}
         >
           <FilterMenuMobile
             handleLocationChange={handleLocationChange}
@@ -42,6 +50,8 @@ const Filter = ({
             genderFilter={genderFilter}
             filterObject={filterObject}
             currentPage={currentPage}
+            setOpen={setOpen}
+            toggleOpen={toggleOpen}
           />
         </Modal>
         <button className={`${searchToggle}`}>x</button>

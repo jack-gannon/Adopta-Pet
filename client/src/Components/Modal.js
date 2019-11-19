@@ -5,12 +5,14 @@ import {
   modalOuter,
   closeBtn
 } from "../styles/component-modules/modal.module.css";
-const Modal = ({ toggleText, toggleStyles, children, defaultOpen }) => {
-  const [isOpen, setOpen] = useState(defaultOpen);
-  const toggleOpen = () => {
-    setOpen(!isOpen);
-  };
-
+const Modal = ({
+  toggleText,
+  toggleStyles,
+  children,
+  isOpen,
+  setOpen,
+  toggleOpen
+}) => {
   return (
     <div>
       <button onClick={() => toggleOpen()} className={toggleStyles}>

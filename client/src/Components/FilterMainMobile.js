@@ -11,6 +11,7 @@ import {
 import { label } from "../styles/type.module.css";
 import FilterOptionsButtonMobile from "./FilterOptionsButtonMobile";
 import FilterGenderRadioBtnMobile from "./FilterGenderRadioBtnMobile";
+import { SET_PAGE } from "../actions/types";
 
 const FilterMainMobile = ({
   handleLocationChange,
@@ -22,11 +23,14 @@ const FilterMainMobile = ({
   handleTypeDisplay,
   handleBreedDisplay,
   filterObject,
-  currentPage
+  currentPage,
+  toggleOpen
 }) => {
   const dispatch = useDispatch();
   const handleApplyFilter = () => {
+    dispatch({ type: SET_PAGE, payload: 1 });
     dispatch(getPetsWithFilter(filterObject, currentPage));
+    toggleOpen();
   };
   return (
     <div className={filterPage}>

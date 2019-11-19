@@ -6,6 +6,7 @@ import {
   textBox
 } from "../styles/component-modules/hero.module.css";
 import { container } from "../styles/layout.module.css";
+import { CLEAR_PETS } from "../actions/types";
 import {
   btn,
   btnLarge,
@@ -28,6 +29,7 @@ const Hero = () => {
           <Link
             to="/browse"
             className={`${btn} ${btnLarge} ${btnPrimary} ${btnRound}`}
+            onClick={() => dispatch({ type: CLEAR_PETS })}
           >
             Browse Pets
           </Link>

@@ -1,19 +1,38 @@
 import React from "react";
-import { paginationMobile } from "../styles/component-modules/pagination.module.css";
+import {
+  paginationMobile,
+  pageBtn,
+  pageBtnDisabled
+} from "../styles/component-modules/pagination.module.css";
 
 const PaginationMobile = ({
   currentPage,
   handleNextPage,
   handlePreviousPage,
-  isFirstPage
+  isFirstPage,
+  isLastPage,
+  pageCount
 }) => {
   return (
     <div className={paginationMobile}>
-      <button onClick={isFirstPage ? null : () => handlePreviousPage()}>
+      <button
+        onClick={isFirstPage ? null : () => handlePreviousPage()}
+        className={`${pageBtn} ${isFirstPage && pageBtnDisabled}`}
+        disabled={isFirstPage}
+      >
         &larr;
       </button>
-      <p>{currentPage}</p>
-      <button onClick={() => handleNextPage()}>&rarr;</button>
+      <p>
+        {currentPage}
+        {pageCount === 0 || pageCount > 999 ? null : ` / ${pageCount}`}
+      </p>
+      <button
+        onClick={isLastPage ? null : () => handleNextPage()}
+        className={`${pageBtn} ${isLastPage && pageBtnDisabled}`}
+        disabled={isLastPage}
+      >
+        &rarr;
+      </button>
     </div>
   );
 };

@@ -31,7 +31,7 @@ router.get("/search/:location.:type.:breed.:gender/:page", async (req, res) => {
     .search(formatSearchParams(req.params))
     .then(response => {
       console.log("search request:", formatSearchParams(req.params));
-      res.json(response.data.animals);
+      res.json(response.data);
     })
     .catch(error => {
       console.log("BAD search request:", formatSearchParams(req.params));
