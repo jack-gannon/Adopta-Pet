@@ -4,6 +4,7 @@ import { getPet } from "../actions/pets";
 import { h1 } from "../styles/type.module.css";
 import { useParams } from "react-router-dom";
 import Spinner from "../Components/Spinner";
+import { formatAnimalName } from "../utils/formatAnimalName";
 
 const Profile = () => {
   let { id } = useParams();
