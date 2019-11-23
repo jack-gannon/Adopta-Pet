@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import {
   resultsGridItem,
-  resultsGridDetailsToggle,
-  resultsGridMainImg,
-  resultsGridInfoPanel,
-  resultsGridDetailsPanel,
-  resultsGridDetailsPanelInactive,
-  resultsGridDetailsPanelActive,
-  resultsGridDetailsPanelImg,
-  resultsGridDetailsPanelDetails,
-  resultsGridDetailsPanelDetailsItem,
-  resultsGridName,
-  resultsGridValue
-} from "../styles/component-modules/results.module.css";
+  toggleSlot,
+  saveSlot,
+  mainImg,
+  infoPanel,
+  imgContainer,
+  stop1,
+  stop2,
+  detailsPanel,
+  detailsPanelInactive,
+  detailsPanelActive,
+  detailsPanelImg,
+  detailsPanelDetails,
+  detailsItem,
+  itemName,
+  itemValue
+} from "../styles/component-modules/resultsGrid.module.css";
 import { useDispatch } from "react-redux";
 import Placeholder from "./Placeholder";
 import { formatAnimalName } from "../utils/formatAnimalName";
 import { Link } from "react-router-dom";
 import { CLEAR_PET } from "../actions/types";
+import ResultsSaveButton from "../Components/ResultsSaveButton";
+import ResultsDetailsButton from "../Components/ResultsDetailsButton";
 
 const ResultsGridItem = ({ pet }) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -29,57 +35,70 @@ const ResultsGridItem = ({ pet }) => {
   };
   return (
     <li className={resultsGridItem}>
-      {photos[0] ? (
-        <img
-          src={photos[0] ? photos[0].medium : ""}
-          alt={name}
-          className={resultsGridMainImg}
+      <div className={toggleSlot}>
+        <ResultsDetailsButton
+          toggleAction={() => toggleDetailsPanel()}
+          detailsOpen={detailsOpen}
         />
-      ) : (
-        <Placeholder type={type} name={name} className={resultsGridMainImg} />
-      )}
-
-      <div className={resultsGridInfoPanel}>
-        <button
-          onClick={() => toggleDetailsPanel()}
-          className={resultsGridDetailsToggle}
-        >
-          {detailsOpen ? <span>&times;</span> : <span>&hellip;</span>}
-        </button>
+      </div>
+      <div className={imgContainer}>
+        {// Determine whether or not to use Placeholder image for Main Image
+        photos[0] ? (
+          <>
+            <img
+              src={photos[0] ? photos[0].medium : ""}
+              alt={name}
+              className={mainImg}
+            />
+            <svg>
+              <defs>
+                <linearGradient id="gradient">
+                  <stop offset="0%" className={stop1} />
+                  <stop offset="100%" className={stop2} />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#gradient)"></rect>
+            </svg>
+          </>
+        ) : (
+          <Placeholder type={type} name={name} className={mainImg} />
+        )}
+      </div>
+      <div className={infoPanel}>
+        <div className={saveSlot}>
+          <ResultsSaveButton id={id} />
+        </div>
         <Link to={`/pet/${id}`} onClick={() => dispatch({ type: CLEAR_PET })}>
           {" "}
-          <p className={resultsGridName}>{formatAnimalName(name, 12)}</p>
+          <p className={itemName}>{formatAnimalName(name, 12)}</p>
         </Link>
-        <p className={resultsGridValue}>
+        <p className={itemValue}>
           {contact.address.city}, {contact.address.state}
         </p>
       </div>
       <div
-        className={`${resultsGridDetailsPanel} ${
-          detailsOpen
-            ? resultsGridDetailsPanelActive
-            : resultsGridDetailsPanelInactive
+        className={`${detailsPanel} ${
+          detailsOpen ? detailsPanelActive : detailsPanelInactive
         }`}
       >
-        {photos[0] ? (
+        {// Determine whether or not to use Placeholder image for Details Panel Image
+        photos[0] ? (
           <img
             src={photos[0] ? photos[0].medium : ""}
             alt={name}
-            className={resultsGridDetailsPanelImg}
+            className={detailsPanelImg}
           />
         ) : (
-          <Placeholder
-            type={type}
-            name={name}
-            className={resultsGridDetailsPanelImg}
-          />
+          <Placeholder type={type} name={name} className={detailsPanelImg} />
         )}
-        <div className={resultsGridDetailsPanelDetails}>
-          <p className={resultsGridDetailsPanelDetailsItem}>{species}</p>
+        <div className={detailsPanelDetails}>
+          {species === breeds.primary ? null : (
+            <p className={detailsItem}>{species}</p>
+          )}
           <br />
-          <p className={resultsGridDetailsPanelDetailsItem}>{breeds.primary}</p>
+          <p className={detailsItem}>{breeds.primary}</p>
           <br />
-          <p className={resultsGridDetailsPanelDetailsItem}>{gender}</p>
+          <p className={detailsItem}>{gender}</p>
         </div>
       </div>
     </li>

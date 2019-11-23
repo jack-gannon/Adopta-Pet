@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 import { CLEAR_PET } from "../actions/types";
 import {
   resultsListItem,
-  resultsListName,
-  resultsListValue
-} from "../styles/component-modules/results.module.css";
+  itemField,
+  itemName,
+  itemValue,
+  controls
+} from "../styles/component-modules/resultsList.module.css";
 import Placeholder from "./Placeholder";
 import { formatAnimalName } from "../utils/formatAnimalName";
+import ResultsSaveButton from "./ResultsSaveButton";
+import ResultsDetailsButton from "./ResultsDetailsButton";
 
 const ResultsListItem = ({ pet }) => {
   const { id, name, contact, type, gender, breed, photos } = pet;
@@ -20,13 +24,20 @@ const ResultsListItem = ({ pet }) => {
       ) : (
         <Placeholder type={type} />
       )}
+      <div className={itemField}>
+        <Link to={`/pet/${id}`} onClick={() => dispatch({ type: CLEAR_PET })}>
+          <p className={itemName}>{formatAnimalName(name, 11)}</p>
+        </Link>
+      </div>
+      <div className={itemField}>
+        <p className={itemValue}>
+          {contact.address.city}, {contact.address.state}
+        </p>
+      </div>
 
-      <Link to={`/pet/${pet.id}`} onClick={() => dispatch({ type: CLEAR_PET })}>
-        <p className={resultsListName}>{formatAnimalName(name, 12)}</p>
-      </Link>
-      <p className={resultsListValue}>
-        {contact.address.city}, {contact.address.state}
-      </p>
+      <div className={controls}>
+        <ResultsSaveButton />
+      </div>
     </li>
   );
 };

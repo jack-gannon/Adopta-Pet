@@ -1,7 +1,7 @@
 import { RESULTS_DISPLAY_GRID, RESULTS_DISPLAY_LIST } from "../actions/types";
 
 const initialState = {
-  display: "grid"
+  display: "list"
 };
 
 export default function resultsReducer(state = initialState, action) {

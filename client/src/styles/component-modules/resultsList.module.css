@@ -1,0 +1,53 @@
+@import "../colors.module.css";
+
+.resultsList {
+  composes: sansSerif from "../type.module.css";
+}
+
+.resultsListItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+}
+
+.resultsListItem a {
+  text-decoration: none;
+}
+
+.itemField {
+  flex-basis: 35%;
+}
+
+.itemName {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--gray-darkest);
+  text-transform: capitalize;
+  margin-left: 1rem;
+}
+
+.itemValue {
+  composes: sansSerif from "../type.module.css";
+  color: var(--gray-dark);
+  font-size: 0.75rem;
+}
+
+.resultsListItem img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 100%;
+}

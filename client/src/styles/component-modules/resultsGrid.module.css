@@ -1,0 +1,158 @@
+@import "../colors.module.css";
+
+/* ------------- GRID LAYOUT --------------- */
+
+.resultsGrid ul {
+  display: grid;
+  grid-template-columns: calc(50% - 0.25rem) calc(50% - 0.25rem);
+  column-gap: 0.5rem;
+}
+
+/* ------------- GRID RESULTS --------------- */
+
+.resultsGridItem {
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 0.5rem;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.toggleSlot {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+}
+
+.saveSlot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.detailsPanel {
+  z-index: 4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10rem;
+  padding: 0.5rem;
+  background-color: #fff;
+  transition: all 0.25s ease-in-out;
+}
+
+.detailsPanelInactive {
+  display: none;
+}
+
+.detailsPanelActive {
+  display: block;
+  width: 100%;
+  opacity: 1;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.detailsPanelImg {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  width: 6rem;
+  height: 6rem;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  object-fit: cover;
+  animation: scaleDown 0.25s ease-in-out;
+}
+
+.detailsPanelDetails {
+  margin-top: 5.5rem;
+}
+
+.detailsItem {
+  composes: sansSerif from "../type.module.css";
+  line-height: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gray-dark);
+}
+
+.imgContainer {
+  position: relative;
+  z-index: 0;
+  height: 10rem;
+  background-color: var(--gray-dark);
+}
+
+.imgContainer svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  width: 4rem;
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+
+.stop1 {
+  stop-color: var(--gray-darkest);
+  stop-opacity: 0;
+}
+
+.stop2 {
+  stop-color: var(--gray-darkest);
+  stop-opacity: 0.9;
+}
+
+.mainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infoPanel {
+  position: relative;
+  z-index: 2;
+  padding: 0.5em;
+  text-align: left;
+}
+
+.resultsGridItem a {
+  text-decoration: none;
+}
+
+.itemName {
+  composes: sansSerif from "../type.module.css";
+  color: var(--gray-darkest);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.itemValue {
+  composes: sansSerif from "../type.module.css";
+  color: var(--gray-medium);
+  font-size: 0.75rem;
+  letter-spacing: 0.025rem;
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(3, 3);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

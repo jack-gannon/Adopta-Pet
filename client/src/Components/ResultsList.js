@@ -1,11 +1,11 @@
 import React from "react";
 import ResultsListItem from "./ResultsListItem";
-import { browseList } from "../styles/component-modules/browse.module.css";
+import { resultsList } from "../styles/component-modules/resultsList.module.css";
 
 const ResultsList = ({ pets }) => {
   return (
     <div>
-      <ul className={browseList}>
+      <ul className={resultsList}>
         {pets ? (
           pets.map(pet => {
             return <ResultsListItem pet={pet} key={pet.id} />;

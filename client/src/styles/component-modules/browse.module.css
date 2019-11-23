@@ -7,15 +7,3 @@
   margin-top: 4rem;
   color: var(--gray-darkest);
 }
-
-.browseList {
-  composes: sansSerif from "../type.module.css";
-}
-
-.browseListItem {
-  padding: 0.5em;
-}
-
-.browseListItem a {
-  text-decoration: none;
-}
