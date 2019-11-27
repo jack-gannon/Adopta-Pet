@@ -1,0 +1,17 @@
+@import "../colors.module.css";
+
+.detailIcon {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.detailIconCheck {
+  stroke: var(--secondary);
+}
+
+.detailIconX {
+  stroke: var(--quaternary-dark);
+}
