@@ -48,7 +48,7 @@
   padding: 1rem 1.5rem;
   border-radius: 4px;
   font-size: 0.75rem;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .filterGenderRadioBtn svg {
@@ -77,6 +77,7 @@
 .filterGenderBtnInactive {
   font-weight: 500;
   color: var(--gray-dark);
+  border: 1px solid var(--gray-medium);
 }
 
 .filterGenderBtnInactive svg circle {
@@ -218,39 +219,93 @@
   height: 24px;
 }
 
-.filterLocationRadio svg circle {
+.locationInput {
+  position: relative;
+  padding-top: 5%;
+  padding-bottom: 35%;
+}
+
+.locationInput input {
+  border: 1px solid var(--primary);
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  height: 2.5rem;
+}
+
+.autocompleteListOpen {
+  position: absolute;
+  display: block;
+  max-height: 8.5rem;
+  overflow-y: scroll;
+  background-color: #fff;
+  width: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid var(--gray-lighter);
+  border-radius: 4px;
+  box-shadow: 0px 2px 6px var(--shadow-1);
+}
+
+.autcompleteListClosed {
+  display: none;
+}
+
+.autocompleteItem {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--gray-darker);
+}
+
+.filterLocationRadio {
   fill: none;
+  height: 2rem;
   stroke-width: 8px;
+  border: 1px solid;
+}
+
+.filterLocationRadio:first-child {
+  border-radius: 1rem 0px 0px 1rem;
+}
+
+.filterLocationRadio:last-child {
+  border-radius: 0px 1rem 1rem 0px;
+}
+
+.filterLocationRadio:focus {
+  outline: none;
+  background-color: var(--primary-light);
 }
 
 .filterLocationRadioActive {
-  color: var(--primary);
-}
-
-.filterLocationRadioActive svg circle {
-  stroke: var(--primary);
-}
-
-.filterLocationRadioActive .filterRadioInnerCircle {
-  fill: var(--primary);
-  stroke: none;
+  color: var(--primary-dark);
+  border-color: var(--primary);
+  font-weight: 800;
 }
 
 .filterLocationRadioInactive {
-  color: var(--gray-dark);
-}
-
-.filterLocationRadioInactive svg circle {
-  stroke: var(--gray-dark);
+  color: var(--gray-medium);
+  border-color: var(--gray-light);
+  font-weight: 300;
 }
 
 .filterBackBtn {
   margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
 }
 
 .filterSelectBtn {
   composes: btn from "../buttons.module.css";
   composes: btnPrimaryOutline from "../buttons.module.css";
+  width: 100%;
+}
+
+.filterSelectBtn:disabled {
+  border: 1px solid var(--gray-light);
+  color: var(--gray-light);
   width: 100%;
 }
 

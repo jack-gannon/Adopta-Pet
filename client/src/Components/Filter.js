@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { SET_LOCATION_FILTER } from "../actions/types";
 import {
   filterInput,
   filterToggle,
@@ -9,26 +7,20 @@ import {
 import { btn, btnPrimaryOutline } from "../styles/buttons.module.css";
 import Modal from "./Modal";
 import FilterMenuMobile from "./FilterMenuMobile";
-import Pagination from "./Pagination";
 
 const Filter = ({
   currentPage,
   filterObject,
   locationFilter,
+  locationFilterType,
   typeFilter,
   breedFilter,
   genderFilter
 }) => {
-  const dispatch = useDispatch();
-
   // Filter Modal State
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => {
     setOpen(!isOpen);
-  };
-
-  const handleLocationChange = e => {
-    dispatch({ type: SET_LOCATION_FILTER, payload: e.target.value });
   };
 
   return (
@@ -43,8 +35,8 @@ const Filter = ({
           toggleOpen={toggleOpen}
         >
           <FilterMenuMobile
-            handleLocationChange={handleLocationChange}
             locationFilter={locationFilter}
+            locationFilterType={locationFilterType}
             typeFilter={typeFilter}
             breedFilter={breedFilter}
             genderFilter={genderFilter}
@@ -56,7 +48,6 @@ const Filter = ({
         </Modal>
         <button className={`${searchToggle}`}>x</button>
       </div>
-      <Pagination currentPage={currentPage} filterObject={filterObject} />
     </>
   );
 };

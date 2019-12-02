@@ -7,7 +7,8 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  location: "Everywhere",
+  location: "All Locations",
+  locationType: "all",
   type: "Any",
   breed: "Any",
   gender: "All",
@@ -17,7 +18,11 @@ const initialState = {
 export default function filterReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LOCATION_FILTER:
-      return { ...state, location: action.payload };
+      return {
+        ...state,
+        location: action.payload.value,
+        locationType: action.payload.type
+      };
     case SET_TYPE_FILTER:
       return { ...state, type: action.payload };
     case SET_BREED_FILTER:

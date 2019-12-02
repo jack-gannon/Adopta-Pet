@@ -1,9 +1,14 @@
 import {
+  SET_LOCATION_FILTER,
   SET_TYPE_FILTER,
   SET_BREED_FILTER,
   SET_AVAILABLE_BREEDS
 } from "../actions/types";
 import axios from "axios";
+
+export const setLocationFilter = (value, type) => dispatch => {
+  dispatch({ type: SET_LOCATION_FILTER, payload: { value, type } });
+};
 
 export const setTypeFilter = value => dispatch => {
   dispatch({ type: SET_TYPE_FILTER, payload: value });

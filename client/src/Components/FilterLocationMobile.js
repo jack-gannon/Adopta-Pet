@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   filterPage,
   filterBackBtn,
@@ -6,51 +7,80 @@ import {
   filterHeader,
   filterLocationRadioOptions
 } from "../styles/component-modules/filter.module.css";
+import { label } from "../styles/type.module.css";
+import { setLocationFilter } from "../actions/filter";
 
 import FilterLocationRadioMobile from "./FilterLocationRadioMobile";
-import FilterLocationStateSelect from "./FilterLocationStateSelect";
+import FilterLocationInputMobile from "./FilterLocationInputMobile";
 
-const FilterLocationMobile = ({ handleMainDisplay }) => {
+const FilterLocationMobile = ({
+  handleSelectDisplay,
+  locationFilter,
+  locationFilterType
+}) => {
   // Component State
-  const [displayStates, setDisplayStates] = useState(false);
-  const [locationType, setLocationType] = useState("all");
-  return displayStates ? (
-    <FilterLocationStateSelect />
-  ) : (
+  const [locationValue, setLocationValue] = useState(locationFilter);
+  const [locationType, setLocationType] = useState(locationFilterType);
+
+  const dispatch = useDispatch();
+  const handleApplyLocation = () => {
+    dispatch(setLocationFilter(locationValue, locationType));
+    handleSelectDisplay("main");
+  };
+
+  const handleSelectLocationType = type => {
+    if (type === "zip" || type === "city/state") {
+      locationFilterType === type
+        ? setLocationValue(locationFilter)
+        : setLocationValue("");
+    } else if (type === "all") {
+      setLocationValue("All Locations");
+    }
+    setLocationType(type);
+  };
+
+  return (
     <div className={filterPage}>
-      <button className={filterBackBtn} onClick={() => handleMainDisplay()}>
+      <button
+        className={filterBackBtn}
+        onClick={() => handleSelectDisplay("main")}
+      >
         Back
       </button>
       <h4 className={filterHeader}>Select Location</h4>
-      <p>Search by:</p>
+      <label className={label}>Search by:</label>
       <div className={filterLocationRadioOptions}>
         <FilterLocationRadioMobile
           isActive={locationType === "all"}
           radioText="All Locations"
-          action={() => setLocationType("all")}
+          action={() => handleSelectLocationType("all")}
         />
         <FilterLocationRadioMobile
           isActive={locationType === "zip"}
           radioText="ZIP Code"
-          action={() => setLocationType("zip")}
-          renderElement={zipRenderElement}
+          action={() => handleSelectLocationType("zip")}
         />
         <FilterLocationRadioMobile
           isActive={locationType === "city/state"}
           radioText="City & State"
-          action={() => setLocationType("city/state")}
+          action={() => handleSelectLocationType("city/state")}
         />
       </div>
       <br />
-      <button className={filterSelectBtn}>Select</button>
+      <FilterLocationInputMobile
+        locationType={locationType}
+        setLocationValue={setLocationValue}
+        locationValue={locationValue}
+      />
+      <button
+        className={filterSelectBtn}
+        disabled={locationValue === ""}
+        onClick={() => handleApplyLocation()}
+      >
+        Apply
+      </button>
     </div>
   );
 };
-
-const zipRenderElement = (
-  <div>
-    <p>This is where you select zip code</p>
-  </div>
-);
 
 export default FilterLocationMobile;

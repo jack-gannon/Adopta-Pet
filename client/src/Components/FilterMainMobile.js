@@ -19,9 +19,7 @@ const FilterMainMobile = ({
   typeFilter,
   breedFilter,
   genderFilter,
-  handleLocationDisplay,
-  handleTypeDisplay,
-  handleBreedDisplay,
+  handleSelectDisplay,
   filterObject,
   currentPage,
   toggleOpen
@@ -38,7 +36,8 @@ const FilterMainMobile = ({
       <label className={label}>Location</label>
       <FilterOptionsButtonMobile
         isDisabled={false}
-        action={() => handleLocationDisplay()}
+        handleSelectDisplay={handleSelectDisplay}
+        action={() => handleSelectDisplay("location")}
         value={locationFilter}
       />
       <br />
@@ -46,7 +45,7 @@ const FilterMainMobile = ({
       <br />
       <FilterOptionsButtonMobile
         isDisabled={false}
-        action={() => handleTypeDisplay()}
+        action={() => handleSelectDisplay("type")}
         value={typeFilter}
       />
       <br />
@@ -54,7 +53,7 @@ const FilterMainMobile = ({
       <br />
       <FilterOptionsButtonMobile
         isDisabled={typeFilter === "Any"}
-        action={() => handleBreedDisplay()}
+        action={() => handleSelectDisplay("breed")}
         value={breedFilter}
       />
       <br />

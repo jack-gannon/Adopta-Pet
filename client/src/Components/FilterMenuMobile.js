@@ -7,8 +7,8 @@ import FilterBreedMobile from "./FilterBreedMobile";
 
 // Controls which mobile filter page to display
 const FilterMenuMobile = ({
-  handleLocationChange,
   locationFilter,
+  locationFilterType,
   typeFilter,
   setTypeFilter,
   breedFilter,
@@ -22,23 +22,8 @@ const FilterMenuMobile = ({
   const [displayOptions, setDisplayOptions] = useState("main");
 
   // Renders the Main Options Component
-  const handleMainDisplay = () => {
-    setDisplayOptions("main");
-  };
-
-  // Renders the Location Options Component
-  const handleLocationDisplay = () => {
-    setDisplayOptions("location");
-  };
-
-  // Renders the Animal Type Options Component
-  const handleTypeDisplay = () => {
-    setDisplayOptions("type");
-  };
-
-  // Renders the Animal Breed Options Component
-  const handleBreedDisplay = () => {
-    setDisplayOptions("breed");
+  const handleSelectDisplay = value => {
+    setDisplayOptions(value);
   };
 
   return (
@@ -46,36 +31,32 @@ const FilterMenuMobile = ({
       <div className={filterInputMobile}>
         {displayOptions === "main" ? (
           <FilterMainMobile
-            handleLocationChange={handleLocationChange}
             locationFilter={locationFilter}
             typeFilter={typeFilter}
             breedFilter={breedFilter}
             genderFilter={genderFilter}
-            handleLocationDisplay={handleLocationDisplay}
-            handleTypeDisplay={handleTypeDisplay}
-            handleBreedDisplay={handleBreedDisplay}
+            handleSelectDisplay={handleSelectDisplay}
             filterObject={filterObject}
             currentPage={currentPage}
             toggleOpen={toggleOpen}
           />
         ) : displayOptions === "location" ? (
           <FilterLocationMobile
-            handleMainDisplay={handleMainDisplay}
-            handleBreedDisplay={handleBreedDisplay}
+            locationFilter={locationFilter}
+            locationFilterType={locationFilterType}
+            handleSelectDisplay={handleSelectDisplay}
             typeFilter={typeFilter}
             setTypeFilter={setTypeFilter}
           />
         ) : displayOptions === "type" ? (
           <FilterTypeMobile
-            handleMainDisplay={handleMainDisplay}
-            handleBreedDisplay={handleBreedDisplay}
+            handleSelectDisplay={handleSelectDisplay}
             typeFilter={typeFilter}
             setTypeFilter={setTypeFilter}
           />
         ) : displayOptions === "breed" ? (
           <FilterBreedMobile
-            handleTypeDisplay={handleTypeDisplay}
-            handleMainDisplay={handleMainDisplay}
+            handleSelectDisplay={handleSelectDisplay}
             breedFilter={breedFilter}
             setBreedFilter={setBreedFilter}
             typeFilter={typeFilter}

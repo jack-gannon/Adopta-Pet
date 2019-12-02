@@ -9,17 +9,20 @@ import {
 } from "../styles/component-modules/filter.module.css";
 import AnimalBreedItemMobile from "./AnimalBreedItemMobile";
 
-const FilterBreedMobile = ({ breedFilter, handleMainDisplay }) => {
+const FilterBreedMobile = ({ breedFilter, handleSelectDisplay }) => {
   const breeds = useSelector(state => state.filter.availableBreeds);
   const [selectedItem, setSelectedItem] = useState("Any");
   const dispatch = useDispatch();
   const handleSelectBreed = () => {
     dispatch({ type: SET_BREED_FILTER, payload: selectedItem });
-    handleMainDisplay();
+    handleSelectDisplay("main");
   };
   return (
     <div className={filterPage}>
-      <button className={filterBackBtn} onClick={() => handleMainDisplay()}>
+      <button
+        className={filterBackBtn}
+        onClick={() => handleSelectDisplay("main")}
+      >
         Back
       </button>
       <div className={filterBreedOptions}>

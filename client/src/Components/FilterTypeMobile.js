@@ -24,7 +24,7 @@ const animalTypes = [
 ];
 
 const FilterTypeMobile = ({
-  handleMainDisplay,
+  handleSelectDisplay,
   typeFilterValue,
   setTypeFilter
 }) => {
@@ -42,11 +42,14 @@ const FilterTypeMobile = ({
     if (selectedItem !== "Any") {
       dispatch(setAvailableBreeds(selectedItem));
     }
-    handleMainDisplay(); // Return to main menu page
+    handleSelectDisplay("main"); // Return to main menu page
   };
   return (
     <div className={filterPage}>
-      <button className={filterBackBtn} onClick={() => handleMainDisplay()}>
+      <button
+        className={filterBackBtn}
+        onClick={() => handleSelectDisplay("main")}
+      >
         Back
       </button>
       <h4 className={filterHeader}>Animal Type</h4>
