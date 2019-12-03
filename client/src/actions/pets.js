@@ -4,6 +4,8 @@ import {
   GET_PETS_ERROR,
   SET_PETS_LOADING,
   PETS_LOAD_COMPLETE,
+  SET_PET_LOADING,
+  PET_LOAD_COMPLETE,
   LOAD_COMPLETE,
   SET_LOADING,
   GET_PAGE_COUNT
@@ -41,7 +43,7 @@ export const getPetsWithFilter = (filter, pageNumber) => async dispatch => {
     const res = await axios.get(
       `/api/pets/search/${location}.${type}.${breed}.${gender}/${pageNumber}`
     );
-    // Get all the pets from the server
+    // Get all the pets that match the criteria from the server
     dispatch({
       type: GET_PETS,
       payload: res.data.animals
@@ -53,6 +55,10 @@ export const getPetsWithFilter = (filter, pageNumber) => async dispatch => {
       payload: res.data.pagination.total_pages
     });
   } catch (error) {
+    dispatch({
+      type: GET_PETS_ERROR,
+      payload: error
+    });
     console.log(error);
   }
   dispatch({ type: PETS_LOAD_COMPLETE });
@@ -60,19 +66,19 @@ export const getPetsWithFilter = (filter, pageNumber) => async dispatch => {
 
 // Get single pet based on ID
 export const getPet = id => async dispatch => {
-  dispatch({ type: SET_LOADING });
+  dispatch({ type: SET_PET_LOADING });
   try {
     const res = await axios.get(`/api/pets/pet/${id}`);
     dispatch({
       type: GET_PET,
       payload: res.data
     });
-    dispatch({ type: LOAD_COMPLETE });
+    dispatch({ type: PET_LOAD_COMPLETE });
   } catch (error) {
     console.log(error);
     dispatch({
       type: GET_PETS_ERROR
     });
-    dispatch({ type: LOAD_COMPLETE });
+    dispatch({ type: PET_LOAD_COMPLETE });
   }
 };

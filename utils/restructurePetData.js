@@ -17,13 +17,14 @@ module.exports = restructurePetData = obj => {
             location: `${obj.contact.address.city}, ${obj.contact.address.state}`
           },
           { distance: obj.distance },
+          { gender: obj.gender },
           { status: obj.status }
         ]
       },
       {
         title: "Medical",
         items: [
-          { spayed_neutered: obj.attributes.spayed_neutered },
+          { spayed_slash_neutered: obj.attributes.spayed_neutered },
           { special_needs: obj.attributes.special_needs },
           { shots_current: obj.attributes.shots_current },
           { declawed: obj.attributes.declawed }
@@ -34,11 +35,7 @@ module.exports = restructurePetData = obj => {
         items: [
           { coat: obj.coat },
           {
-            colors: [
-              obj.colors.primary,
-              obj.colors.secondary,
-              obj.colors.tertiary
-            ]
+            color: obj.colors.primary
           },
           { size: obj.size }
         ]

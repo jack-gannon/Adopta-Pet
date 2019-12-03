@@ -1,7 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { CLEAR_PET } from "../actions/types";
+import { formatAnimalName } from "../utils/formatAnimalName";
 import {
   resultsListItem,
   itemField,
@@ -10,22 +9,20 @@ import {
   controls
 } from "../styles/component-modules/resultsList.module.css";
 import Placeholder from "./Placeholder";
-import { formatAnimalName } from "../utils/formatAnimalName";
+import Image from "./Image";
 import ResultsSaveButton from "./ResultsSaveButton";
-import ResultsDetailsButton from "./ResultsDetailsButton";
 
 const ResultsListItem = ({ pet }) => {
-  const { id, name, contact, type, gender, breed, photos } = pet;
-  const dispatch = useDispatch();
+  const { id, name, contact, type, breed, photos } = pet;
   return (
     <li className={resultsListItem}>
       {photos[0] ? (
-        <img src={pet.photos[0].small} alt={`${name} the ${breed}`} />
+        <Image src={pet.photos[0].small} alt={`${name} the ${breed}`} />
       ) : (
         <Placeholder type={type} />
       )}
       <div className={itemField}>
-        <Link to={`/pet/${id}`} onClick={() => dispatch({ type: CLEAR_PET })}>
+        <Link to={`/pet/${id}`}>
           <p className={itemName}>{formatAnimalName(name, 11)}</p>
         </Link>
       </div>
@@ -34,7 +31,6 @@ const ResultsListItem = ({ pet }) => {
           {contact.address.city}, {contact.address.state}
         </p>
       </div>
-
       <div className={controls}>
         <ResultsSaveButton />
       </div>

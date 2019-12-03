@@ -1,29 +1,33 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPet } from "../actions/pets";
-import { h1 } from "../styles/type.module.css";
+import { CLEAR_PET } from "../actions/types";
+import { container } from "../styles/layout.module.css";
 import { useParams } from "react-router-dom";
 import Spinner from "../Components/Spinner";
-import { formatAnimalName } from "../utils/formatAnimalName";
+import ProfileComponent from "../Components/ProfileComponent";
 
 const Profile = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
-  const loading = useSelector(state => state.load.loading);
-  const pet = useSelector(state => state.pet.activePet);
+  const petLoading = useSelector(state => state.load.petLoading);
+  const activePet = useSelector(state => state.pet.activePet);
   useEffect(() => {
     dispatch(getPet(id));
-    console.log(pet);
+
+    // Cleanup Function
+    return () => {
+      dispatch({ type: CLEAR_PET });
+    };
   }, [dispatch, id]);
+
   return (
-    <div>
-      {loading ? (
+    <div className={container}>
+      {petLoading || !activePet ? (
         <Spinner />
       ) : (
         <>
-          <h1 style={{ paddingTop: "4rem", color: "#000" }} className={h1}>
-            {pet.name}
-          </h1>
+          <ProfileComponent activePet={activePet} />
         </>
       )}
     </div>

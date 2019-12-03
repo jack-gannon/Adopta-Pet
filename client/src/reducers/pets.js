@@ -1,7 +1,7 @@
 import { GET_PETS, GET_PET, CLEAR_PET, CLEAR_PETS } from "../actions/types";
 const initialState = {
   pets: [],
-  activePet: {}
+  activePet: null
 };
 
 export default function petsReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ export default function petsReducer(state = initialState, action) {
     case GET_PET:
       return { ...state, activePet: action.payload };
     case CLEAR_PET:
-      return { ...state, activePet: {} };
+      return { ...state, activePet: null };
     case CLEAR_PETS:
       return { ...state, pets: [] };
     default:
