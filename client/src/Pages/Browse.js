@@ -1,15 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { container } from "../styles/layout.module.css";
-import {
-  browseHeader,
-  browseList,
-  browseListItem
-} from "../styles/component-modules/browse.module.css";
-
+import { browseHeader } from "../styles/component-modules/browse.module.css";
 import { getPetsWithFilter } from "../actions/pets";
-
-import Spinner from "../Components/Spinner";
 import Filter from "../Components/Filter";
 import Results from "../Components/Results";
 
@@ -22,6 +15,7 @@ const Browse = () => {
   const typeFilter = useSelector(state => state.filter.type);
   const breedFilter = useSelector(state => state.filter.breed);
   const locationFilter = useSelector(state => state.filter.location);
+  const locationFilterType = useSelector(state => state.filter.locationType);
   const genderFilter = useSelector(state => state.filter.gender);
 
   const filterObject = {
@@ -41,14 +35,19 @@ const Browse = () => {
     <div className={container}>
       <h1 className={browseHeader}>Browse Pets</h1>
       <Filter
-        currentPage={currentPage}
         filterObject={filterObject}
         locationFilter={locationFilter}
+        locationFilterType={locationFilterType}
         typeFilter={typeFilter}
         breedFilter={breedFilter}
         genderFilter={genderFilter}
+        currentPage={currentPage}
       />
-      {petsLoading ? <Spinner /> : <Results pets={pets} />}
+      <Results
+        currentPage={currentPage}
+        pets={pets}
+        petsLoading={petsLoading}
+      />
     </div>
   );
 };

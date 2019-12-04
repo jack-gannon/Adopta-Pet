@@ -4,6 +4,11 @@ import {
   animalTypeListItemSelected,
   animalTypeListItemDeselected
 } from "../styles/component-modules/filter.module.css";
+import {
+  detailIcon,
+  detailIconCheck
+} from "../styles/component-modules/feedback.module.css";
+import DetailIcon from "./DetailIcon";
 
 const AnimalTypeItemMobile = ({
   name,
@@ -20,7 +25,16 @@ const AnimalTypeItemMobile = ({
     >
       <button onClick={() => setSelectedItem(name)}>
         <span>{name}</span>
-        <span>{isSelected ? "check" : isActive ? "Yes" : null}</span>
+        <span>
+          {isSelected ? (
+            "check"
+          ) : isActive ? (
+            <DetailIcon
+              type="check"
+              className={`${detailIcon} ${detailIconCheck}`}
+            />
+          ) : null}
+        </span>
       </button>
     </li>
   );
