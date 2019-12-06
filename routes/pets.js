@@ -1,17 +1,14 @@
 const express = require("express");
-const petfinder = require("@petfinder/petfinder-js");
-const client = new petfinder.Client({
-  apiKey: process.env.API_KEY,
-  secret: process.env.API_SECRET
-});
+const auth = require("../utils/auth");
 const router = express.Router();
-
 const formatSearchParams = require("../utils/formatSearchParams");
+const restructurePetData = require("../utils/restructurePetData");
 
 // @route   GET api/pets
 // @desc    Get pets
 // @access  Public
 router.get("/", async (req, res) => {
+  let client = await auth();
   client.animal
     .search()
     .then(response => {
@@ -27,6 +24,7 @@ router.get("/", async (req, res) => {
 // @desc    Get pets based on search parameters
 // @access  Public
 router.get("/search/:location.:type.:breed.:gender/:page", async (req, res) => {
+  let client = await auth();
   client.animal
     .search(formatSearchParams(req.params))
     .then(response => {
@@ -35,8 +33,17 @@ router.get("/search/:location.:type.:breed.:gender/:page", async (req, res) => {
     })
     .catch(error => {
       console.log("BAD search request:", formatSearchParams(req.params));
+      console.log(error.status);
       console.log(error.message);
-      res.status(400).send(error.message);
+      if (error.status === 401) {
+        // Refreshes client if access token expires
+        console.log("Attempting to reset petfinder client");
+      }
+      res.status(error.status).send({
+        message: error.message,
+        status: error.status,
+        details: error.details
+      });
     });
 });
 
@@ -44,10 +51,12 @@ router.get("/search/:location.:type.:breed.:gender/:page", async (req, res) => {
 // @desc    Get pet based on ID
 // @access  Public
 router.get("/pet/:id", async (req, res) => {
+  let client = await auth();
   client.animal
     .show(req.params.id)
+    .then(response => restructurePetData(response.data.animal))
     .then(response => {
-      res.json(response.data.animal);
+      res.json(response);
     })
     .catch(error => {
       console.log(error.message);
