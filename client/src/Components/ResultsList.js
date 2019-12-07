@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import ResultsListItem from "./ResultsListItem";
 import { resultsList } from "../styles/component-modules/resultsList.module.css";
 
 const ResultsList = ({ pets }) => {
+  const favorites = useSelector(state => state.pet.favorites);
+  useEffect(() => {}, [favorites]);
   return (
     <div>
       <ul className={resultsList}>

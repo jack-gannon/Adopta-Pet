@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { container } from "../styles/layout.module.css";
 import { browseHeader } from "../styles/component-modules/browse.module.css";
 import { getPetsWithFilter } from "../actions/pets";
+import { getFavorites } from "../actions/pets";
 import Filter from "../Components/Filter";
 import Results from "../Components/Results";
 
@@ -29,6 +30,7 @@ const Browse = () => {
 
   useEffect(() => {
     dispatch(getPetsWithFilter(filterObject, currentPage));
+    dispatch(getFavorites());
   }, [currentPage]);
 
   return (

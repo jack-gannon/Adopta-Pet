@@ -5,15 +5,16 @@ export const GET_PETS = "GET_PETS";
 export const GET_PETS_ERROR = "GET_PETS_ERROR";
 export const CLEAR_PET = "CLEAR_PET";
 export const CLEAR_PETS = "CLEAR_PETS";
-// Filter Actions
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const GET_FAVORITES = "GET_FAVORITES";
+export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+// Filter & Results Actions
 export const SET_LOCATION_FILTER = "SET_LOCATION_FILTER";
 export const SET_TYPE_FILTER = "SET_TYPE_FILTER";
 export const SET_BREED_FILTER = "SET_BREED_FILTER";
 export const SET_GENDER_FILTER = "SET_GENDER_FILTER";
 export const SET_AVAILABLE_BREEDS = "SET_AVAILABLE_BREEDS";
 export const APPLY_FILTER = "APPLY_FILTER";
-export const ADD_FAVORITE = "ADD_FAVORITE";
-export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const RESULTS_DISPLAY_GRID = "RESULTS_DISPLAY_GRID";
 export const RESULTS_DISPLAY_LIST = "RESULTS_DISPLAY_LIST";
 // Load Actions

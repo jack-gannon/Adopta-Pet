@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { formatAnimalName } from "../utils/formatAnimalName";
 import {
@@ -13,11 +13,9 @@ import {
 import Placeholder from "./Placeholder";
 import Image from "./Image";
 import ResultsSaveButton from "../Components/ResultsSaveButton";
-import ResultsDetailsButton from "../Components/ResultsDetailsButton";
 
 const ResultsGridItem = ({ pet }) => {
-  const { id, name, photos, gender, contact, type, species, breeds } = pet;
-
+  const { id, name, photos, contact, type } = pet;
   return (
     <li className={resultsGridItem}>
       <div className={imgContainer}>
@@ -36,7 +34,7 @@ const ResultsGridItem = ({ pet }) => {
       </div>
       <div className={infoPanel}>
         <div className={saveSlot}>
-          <ResultsSaveButton id={id} />
+          <ResultsSaveButton pet={pet} />
         </div>
         <Link to={`/pet/${id}`}>
           {" "}

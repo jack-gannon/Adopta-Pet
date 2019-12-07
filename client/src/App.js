@@ -5,7 +5,7 @@ import "./styles/global.css";
 import Home from "./Pages/Home";
 import Browse from "./Pages/Browse";
 import Navbar from "./Components/Navbar";
-import Saved from "./Pages/Saved";
+import Favorites from "./Pages/Favorites";
 import Profile from "./Pages/Profile";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -21,8 +21,8 @@ function App() {
           <Route exact path="/browse">
             <Browse />
           </Route>
-          <Route exact path="/saved">
-            <Saved />
+          <Route exact path="/favorites">
+            <Favorites />
           </Route>
           <Route exact path="/pet/:id" component={Profile} />
         </Switch>

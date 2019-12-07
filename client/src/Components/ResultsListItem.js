@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { formatAnimalName } from "../utils/formatAnimalName";
 import {
   resultsListItem,
+  itemFields,
   itemField,
+  itemFieldMain,
+  itemFieldSub,
   itemName,
   itemValue,
   controls
@@ -13,7 +16,7 @@ import Image from "./Image";
 import ResultsSaveButton from "./ResultsSaveButton";
 
 const ResultsListItem = ({ pet }) => {
-  const { id, name, contact, type, breed, photos } = pet;
+  const { id, name, contact, type, breed, photos, distance } = pet;
   return (
     <li className={resultsListItem}>
       {photos[0] ? (
@@ -21,18 +24,21 @@ const ResultsListItem = ({ pet }) => {
       ) : (
         <Placeholder type={type} />
       )}
-      <div className={itemField}>
-        <Link to={`/pet/${id}`}>
-          <p className={itemName}>{formatAnimalName(name, 11)}</p>
-        </Link>
-      </div>
-      <div className={itemField}>
-        <p className={itemValue}>
-          {contact.address.city}, {contact.address.state}
-        </p>
+      <div className={itemFields}>
+        <div className={`${itemField} ${itemFieldMain}`}>
+          <Link to={`/pet/${id}`}>
+            <p className={itemName}>{formatAnimalName(name, 16)}</p>
+          </Link>
+          <p className={itemValue}>
+            {contact.address.city}, {contact.address.state}{" "}
+          </p>
+        </div>
+        <div className={`${itemField} ${itemFieldSub}`}>
+          <p className={itemValue}>{distance ? distance : null}</p>
+        </div>
       </div>
       <div className={controls}>
-        <ResultsSaveButton />
+        <ResultsSaveButton pet={pet} />
       </div>
     </li>
   );

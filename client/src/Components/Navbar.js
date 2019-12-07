@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Link, NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { CLEAR_PETS } from "../actions/types";
 import { link } from "../styles/type.module.css";
 import {
   navbar,
@@ -12,6 +14,7 @@ import {
 } from "../styles/component-modules/navbar.module.css";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [isOpen, setOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -25,9 +28,12 @@ const Navbar = () => {
       </NavLink>
       <div className={navMenuMobile}>
         <button className={navMenuMobileToggle} onClick={() => toggleOpen()}>
-          {isOpen ? "X" : "-"}
+          {isOpen ? "×" : "-"}
         </button>
         <nav className={isOpen ? navLinksMobileActive : navLinksMobileInactive}>
+          <svg version="1.1" viewBox="0 0 32 12">
+            <polygon points="0.95,12 16,0 30.95,12 " />
+          </svg>
           <ul>
             <li>
               <NavLink to="/" className={link} onClick={() => toggleOpen()}>
@@ -44,9 +50,16 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <Link to="/saved" className={link} onClick={() => toggleOpen()}>
-                Saved
-              </Link>
+              <NavLink
+                to="/favorites"
+                className={link}
+                onClick={() => {
+                  toggleOpen();
+                  dispatch({ type: CLEAR_PETS });
+                }}
+              >
+                Favorites
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -65,8 +78,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/saved" className={link}>
-                Saved
+              <Link to="/favorites" className={link}>
+                Favorites
               </Link>
             </li>
           </ul>

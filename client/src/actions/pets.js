@@ -8,10 +8,15 @@ import {
   PET_LOAD_COMPLETE,
   LOAD_COMPLETE,
   SET_LOADING,
-  GET_PAGE_COUNT
+  GET_PAGE_COUNT,
+  ADD_FAVORITE,
+  GET_FAVORITES,
+  REMOVE_FAVORITE
 } from "./types";
 import axios from "axios";
 import { formatSearchFilter } from "../utils/formatSearchFilter";
+import { addToLocalStorage } from "../utils/addToLocalStorage";
+import { removeFromLocalStorage } from "../utils/removeFromLocalStorage";
 
 // Get all pets
 export const getPets = () => async dispatch => {
@@ -80,5 +85,41 @@ export const getPet = id => async dispatch => {
       type: GET_PETS_ERROR
     });
     dispatch({ type: PET_LOAD_COMPLETE });
+  }
+};
+
+// Add pet to favorites
+export const addFavorite = petObj => async dispatch => {
+  try {
+    let favorites = localStorage.getItem("favorites");
+    if (!favorites) {
+      addToLocalStorage("favorites", "[]");
+    }
+    addToLocalStorage("favorites", petObj);
+    dispatch({ type: ADD_FAVORITE, payload: petObj });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Get all favorited pets
+export const getFavorites = () => async dispatch => {
+  try {
+    let favorites = localStorage.getItem("favorites");
+    dispatch({ type: GET_FAVORITES, payload: JSON.parse(favorites) });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Remove pet from favorites
+export const removeFavorite = petObj => async dispatch => {
+  console.log("removing " + petObj.name);
+  try {
+    let favorites = localStorage.getItem("favorites");
+    removeFromLocalStorage("favorites", petObj);
+    dispatch({ type: REMOVE_FAVORITE, payload: JSON.parse(favorites) });
+  } catch (error) {
+    console.log(error);
   }
 };

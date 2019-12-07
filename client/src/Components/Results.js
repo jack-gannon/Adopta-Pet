@@ -11,7 +11,6 @@ const Results = ({ pets, currentPage, petsLoading }) => {
   const dispatch = useDispatch();
   const resultsDisplay = useSelector(state => state.results.display);
   const petsError = useSelector(state => state.error.petsError);
-
   return (
     <>
       {pets.length > 0 ? (

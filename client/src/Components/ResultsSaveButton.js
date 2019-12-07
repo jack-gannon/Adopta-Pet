@@ -1,18 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, getFavorites, removeFavorite } from "../actions/pets";
 import {
   saveBtn,
   saveBtnActive,
   saveBtnInactive
 } from "../styles/component-modules/results.module.css";
 
-const ResultsSaveButton = ({ id }) => {
-  //Only for syling purposes only. Relocate state to application later
+const ResultsSaveButton = ({ pet }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector(state => state.pet.favorites);
+  const { name, id } = pet;
   const [isSaved, setSaved] = useState(false);
-  const toggleSaved = () => {
-    setSaved(!isSaved);
+
+  useEffect(() => {
+    let i = 0;
+    while (i < favorites.length) {
+      if (favorites[i].id === id) {
+        setSaved(true);
+        break;
+      }
+      i++;
+    }
+    dispatch(getFavorites);
+  }, []);
+
+  const handleAddFavorite = () => {
+    let petObject = {
+      name: name,
+      id: id
+    };
+    setSaved(true);
+    dispatch(addFavorite(petObject));
   };
+
+  const handleRemoveFavorite = () => {
+    let petObject = {
+      name: name,
+      id: id
+    };
+    setSaved(false);
+    dispatch(removeFavorite(petObject));
+  };
+
   return (
-    <button className={saveBtn} onClick={() => toggleSaved()}>
+    <button
+      className={saveBtn}
+      onClick={
+        isSaved ? () => handleRemoveFavorite() : () => handleAddFavorite()
+      }
+    >
       {isSaved ? (
         <svg className={saveBtnActive} x="0px" y="0px" viewBox="0 0 24 24">
           <path
