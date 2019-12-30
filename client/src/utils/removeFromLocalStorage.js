@@ -1,17 +1,21 @@
-export const removeFromLocalStorage = (storageKey, itemToRemove) => {
-  let storageItem = localStorage.getItem(storageKey);
+import { isAnObject } from "./isAnObject";
+
+export const removeFromLocalStorage = (storageKey, itemKey) => {
+  let storageItem = JSON.parse(localStorage.getItem(storageKey));
   if (!storageItem) {
     return;
-  } else if (Array.isArray(JSON.parse(storageItem))) {
-    let itemArray = JSON.parse(storageItem);
-    itemArray = itemArray.filter(item => item.id !== itemToRemove.id);
-    console.log(itemArray);
+  } else if (Array.isArray(storageItem)) {
+    let itemArray = storageItem;
+    itemArray = itemArray.filter(item => item.id !== itemKey);
     localStorage.setItem(storageKey, JSON.stringify(itemArray));
-    console.log(itemToRemove);
+  } else if (isAnObject(storageItem)) {
+    let itemObject = storageItem;
+    if (!itemObject[itemKey]) {
+      console.log("could not find " + itemObject[itemKey]);
+      return;
+    } else {
+      delete itemObject[itemKey];
+      localStorage.setItem(storageKey, JSON.stringify(itemObject));
+    }
   }
-  console.log(
-    `${storageItem} is an array? That is ${Array.isArray(
-      JSON.parse(storageItem)
-    )}`
-  );
 };

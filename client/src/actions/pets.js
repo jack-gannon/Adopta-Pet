@@ -91,11 +91,7 @@ export const getPet = id => async dispatch => {
 // Add pet to favorites
 export const addFavorite = petObj => async dispatch => {
   try {
-    let favorites = localStorage.getItem("favorites");
-    if (!favorites) {
-      addToLocalStorage("favorites", "[]");
-    }
-    addToLocalStorage("favorites", petObj);
+    addToLocalStorage("favorites", petObj, petObj.id);
     dispatch({ type: ADD_FAVORITE, payload: petObj });
   } catch (error) {
     console.log(error);
@@ -106,18 +102,19 @@ export const addFavorite = petObj => async dispatch => {
 export const getFavorites = () => async dispatch => {
   try {
     let favorites = localStorage.getItem("favorites");
-    dispatch({ type: GET_FAVORITES, payload: JSON.parse(favorites) });
+    favorites
+      ? dispatch({ type: GET_FAVORITES, payload: JSON.parse(favorites) })
+      : addToLocalStorage("favorites", "{}");
   } catch (error) {
     console.log(error);
   }
 };
 
 // Remove pet from favorites
-export const removeFavorite = petObj => async dispatch => {
-  console.log("removing " + petObj.name);
+export const removeFavorite = petId => async dispatch => {
   try {
+    removeFromLocalStorage("favorites", petId);
     let favorites = localStorage.getItem("favorites");
-    removeFromLocalStorage("favorites", petObj);
     dispatch({ type: REMOVE_FAVORITE, payload: JSON.parse(favorites) });
   } catch (error) {
     console.log(error);

@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite, getFavorites } from "../actions/pets";
+import { objectToArray } from "../utils/objectToArray";
 import EmptyState from "../Components/EmptyState";
+import FavoritesList from "../Components/FavoritesList";
+import { container } from "../styles/layout.module.css";
+import { header } from "../styles/component-modules/favoritesList.module.css";
 
-const Saved = () => {
+const Favorites = () => {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.pet.favorites);
+  const favoritesArray = objectToArray(favorites);
+
   useEffect(() => {
     dispatch(getFavorites());
   }, [dispatch]);
@@ -16,21 +22,18 @@ const Saved = () => {
   };
 
   return (
-    <div style={{ paddingTop: "12rem" }}>
-      <ul>
-        {favorites.length > 0 ? (
-          favorites.map(fav => (
-            <li key={fav.id}>
-              {`${fav.name} | ${fav.id}`}
-              <button onClick={() => handleRemoveFavorite(fav)}>X</button>
-            </li>
-          ))
-        ) : (
-          <EmptyState type="favorites" />
-        )}
-      </ul>
+    <div className={container}>
+      <h1 className={header}>Favorites</h1>
+      {favoritesArray.length > 0 ? (
+        <FavoritesList
+          favorites={favoritesArray}
+          handleRemoveFavorite={handleRemoveFavorite}
+        />
+      ) : (
+        <EmptyState type="favorites" />
+      )}
     </div>
   );
 };
 
-export default Saved;
+export default Favorites;

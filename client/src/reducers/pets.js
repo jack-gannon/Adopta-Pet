@@ -7,9 +7,10 @@ import {
   GET_FAVORITES,
   REMOVE_FAVORITE
 } from "../actions/types";
+
 const initialState = {
   pets: [],
-  favorites: [],
+  favorites: {},
   activePet: null
 };
 
@@ -26,14 +27,14 @@ export default function petsReducer(state = initialState, action) {
     case ADD_FAVORITE:
       return {
         ...state,
-        favorites: [...state.favorites, action.payload]
+        favorites: { ...state.favorites, [action.payload.id]: action.payload }
       };
     case GET_FAVORITES:
-      return { ...state, favorites: [...action.payload] };
+      return { ...state, favorites: action.payload };
     case REMOVE_FAVORITE:
       return {
         ...state,
-        favorites: [...state.favorites.filter(fav => fav !== action.payload)]
+        favorites: action.payload
       };
     default:
       return state;

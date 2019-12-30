@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, getFavorites, removeFavorite } from "../actions/pets";
+import moment from "moment";
+
 import {
   saveBtn,
   saveBtnActive,
@@ -10,47 +12,35 @@ import {
 const ResultsSaveButton = ({ pet }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.pet.favorites);
-  const { name, id } = pet;
-  const [isSaved, setSaved] = useState(false);
+  const { name, id, photos, type } = pet;
 
   useEffect(() => {
-    let i = 0;
-    while (i < favorites.length) {
-      if (favorites[i].id === id) {
-        setSaved(true);
-        break;
-      }
-      i++;
-    }
     dispatch(getFavorites);
   }, []);
 
   const handleAddFavorite = () => {
     let petObject = {
       name: name,
-      id: id
+      id: id,
+      dateFavorited: moment().calendar(),
+      img: photos.length > 0 ? photos[0].small : null,
+      type: type
     };
-    setSaved(true);
     dispatch(addFavorite(petObject));
   };
 
   const handleRemoveFavorite = () => {
-    let petObject = {
-      name: name,
-      id: id
-    };
-    setSaved(false);
-    dispatch(removeFavorite(petObject));
+    dispatch(removeFavorite(id));
   };
 
   return (
     <button
       className={saveBtn}
       onClick={
-        isSaved ? () => handleRemoveFavorite() : () => handleAddFavorite()
+        favorites[id] ? () => handleRemoveFavorite() : () => handleAddFavorite()
       }
     >
-      {isSaved ? (
+      {favorites[id] ? (
         <svg className={saveBtnActive} x="0px" y="0px" viewBox="0 0 24 24">
           <path
             d="M12,21.4L10.6,20C5.4,15.4,2,12.3,2,8.5C2,5.4,4.4,3,7.5,3c1.7,0,3.4,0.8,4.5,2.1C13.1,3.8,14.8,3,16.5,3
