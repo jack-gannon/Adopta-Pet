@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint:recommended", "airbnb"],
+  "plugins": ["prettier", "flowtype"],
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "rules": {
+    "quotes": 0,
+    "no-console": 0
+  },
+  "env": {
+    "es6": true,
+    "jest": true,
+    "browser": true,
+    "node": true
+  }
+}
