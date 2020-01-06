@@ -1,18 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   modal,
   modalContents,
   modalOuter,
   closeBtn
 } from "../styles/component-modules/modal.module.css";
-const Modal = ({
-  toggleText,
-  toggleStyles,
-  children,
-  isOpen,
-  setOpen,
-  toggleOpen
-}) => {
+const Modal = ({ toggleText, toggleStyles, children, isOpen, toggleOpen }) => {
   return (
     <div>
       <button onClick={() => toggleOpen()} className={toggleStyles}>

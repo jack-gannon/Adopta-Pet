@@ -11,7 +11,6 @@ import {
   selectorInactive
 } from "../styles/component-modules/profileImageGallery.module.css";
 import Image from "./Image";
-import Spinner from "./Spinner";
 const ImageGallery = ({ photos }) => {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [mainImgLoading, setMainImgLoading] = useState(true);

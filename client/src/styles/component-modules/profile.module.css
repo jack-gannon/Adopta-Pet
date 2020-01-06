@@ -26,6 +26,27 @@
   height: 100%;
 }
 
+.backBtn,
+.galleryToggle {
+  position: absolute;
+  z-index: 5;
+  top: 1rem;
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid var(--primary-light);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--primary-light);
+}
+
+.backBtn {
+  left: 1rem;
+}
+
+.galleryToggle {
+  right: 1rem;
+}
+
 .profileName {
   composes: sansSerif from "../type.module.css";
   font-size: 2rem;

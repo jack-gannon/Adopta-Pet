@@ -39,7 +39,6 @@ const ProfileComponent = ({ activePet }) => {
             <ImageGallery photos={photos} />
           </Modal>
         ) : null}
-
         <svg className={background}>
           <rect></rect>
         </svg>
