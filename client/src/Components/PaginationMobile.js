@@ -1,6 +1,7 @@
 import React from "react";
 import {
   paginationMobile,
+  pageNumber,
   pageBtn,
   pageBtnDisabled
 } from "../styles/component-modules/pagination.module.css";
@@ -22,7 +23,7 @@ const PaginationMobile = ({
       >
         &larr;
       </button>
-      <p>
+      <p className={pageNumber}>
         {currentPage}
         {pageCount === 0 || pageCount > 999 ? null : ` / ${pageCount}`}
       </p>

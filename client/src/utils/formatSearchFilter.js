@@ -2,6 +2,7 @@ export const formatSearchFilter = filterObject => {
   let newObject = { ...filterObject.filter };
 
   // Determine location based on provided information
+
   let { zip, city, state } = newObject;
   if (zip) {
     newObject.location = zip;
