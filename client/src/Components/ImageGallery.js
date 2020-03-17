@@ -11,8 +11,8 @@ import {
   selectorInactive
 } from "../styles/component-modules/profileImageGallery.module.css";
 import Image from "./Image";
-const ImageGallery = ({ photos }) => {
-  const [activeImgIndex, setActiveImgIndex] = useState(0);
+const ImageGallery = ({ photos, startIndex = 0 }) => {
+  const [activeImgIndex, setActiveImgIndex] = useState(startIndex);
   const [mainImgLoading, setMainImgLoading] = useState(true);
   const handleSelectImage = index => {
     setActiveImgIndex(index);

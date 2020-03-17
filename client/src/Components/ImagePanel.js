@@ -36,7 +36,7 @@ const ImagePanel = ({ photos, name }) => {
           />
         )}
       >
-        <ImageGallery photos={photos} />
+        <ImageGallery photos={photos} startIndex={activeImgIndex} />
       </Modal>
 
       <div className={selectorPanel}>
