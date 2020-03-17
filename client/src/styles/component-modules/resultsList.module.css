@@ -2,15 +2,16 @@
 
 .resultsList {
   composes: sansSerif from "../type.module.css";
+  animation: fadeIn 0.125s ease-in-out;
 }
 
 .resultsListItem {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 0;
+  margin-bottom: 0.125rem;
   background-color: #fff;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--gray-lighter);
   border-radius: 4px;
 }
 
@@ -18,28 +19,49 @@
   text-decoration: none;
 }
 
+.itemFields {
+  display: flex;
+  align-items: flex-end;
+  width: 75%;
+  height: 100%;
+}
+
 .itemField {
+  height: 100%;
+}
+
+.itemFieldMain {
+  width: 65%;
+  margin-left: 1rem;
+}
+
+.itemFieldMain a {
+  display: inline-block;
+}
+
+.itemFieldSub {
   flex-basis: 35%;
 }
 
 .itemName {
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--gray-darkest);
   text-transform: capitalize;
-  margin-left: 1rem;
 }
 
 .itemValue {
   composes: sansSerif from "../type.module.css";
-  color: var(--gray-dark);
+  margin-top: 0.25rem;
+  color: var(--gray-medium);
   font-size: 0.75rem;
 }
 
 .resultsListItem img {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   object-fit: cover;
+  border-right: 1px solid var(--gray-lighter);
 }
 
 .controls {
@@ -49,5 +71,13 @@
   top: 0;
   right: 0;
   width: 2rem;
-  height: 100%;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

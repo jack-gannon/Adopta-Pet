@@ -8,7 +8,7 @@ const formatSearchParams = oldParams => {
   keys.forEach(key =>
     newParams[key] === "Any" ||
     newParams[key] === "All" ||
-    newParams[key] === "Everywhere"
+    newParams[key] === "All_Locations"
       ? delete newParams[key] // Remove all parameters that weren't included
       : (newParams[key] = newParams[key] // Format multi-word params & slashes
           .replace(/_/g, " ")

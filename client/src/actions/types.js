@@ -32,3 +32,6 @@ export const SET_PAGE = "SET_PAGE";
 export const NEXT_PAGE = "NEXT_PAGE";
 export const PREVIOUS_PAGE = "PREVIOUS_PAGE";
 export const GET_PAGE_COUNT = "GET_PAGE_COUNT";
+
+// Display Actions
+export const SET_MODAL_OPEN = "SET_MODAL_OPEN";

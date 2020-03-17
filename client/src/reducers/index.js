@@ -5,6 +5,7 @@ import load from "./loading";
 import page from "./pagination";
 import results from "./results";
 import error from "./errors";
+import display from "./display";
 
 export default combineReducers({
   page,
@@ -12,5 +13,6 @@ export default combineReducers({
   load,
   filter,
   results,
-  error
+  error,
+  display
 });

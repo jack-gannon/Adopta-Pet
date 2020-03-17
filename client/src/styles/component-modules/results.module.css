@@ -8,17 +8,25 @@
   border: none;
 }
 
+.saveBtn:focus {
+  outline: none;
+}
+
 .saveBtn svg {
   width: 100%;
   opacity: 0.75;
 }
 
 .saveBtnActive path {
-  fill: var(--quaternary);
+  fill: var(--primary-dark);
 }
 
 .saveBtnInactive path {
   fill: var(--gray-light);
+}
+
+.saveBtn:focus .saveBtnInactive path {
+  fill: var(--primary);
 }
 
 .detailsToggle {

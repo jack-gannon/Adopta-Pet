@@ -1,8 +1,9 @@
 const express = require("express");
+
 const app = express();
 require("dotenv").config();
 
-//Initialize Middleware
+// Initialize Middleware
 app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => res.send("API Running..."));
