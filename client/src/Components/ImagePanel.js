@@ -35,9 +35,10 @@ const ImagePanel = ({ photos, name }) => {
             onClick={clickEvent}
           />
         )}
-      >
-        <ImageGallery photos={photos} startIndex={activeImgIndex} />
-      </Modal>
+        contentComponent={clickEvent => (
+          <ImageGallery photos={photos} startIndex={activeImgIndex} />
+        )}
+      ></Modal>
 
       <div className={selectorPanel}>
         {photos.map((photo, index) => (

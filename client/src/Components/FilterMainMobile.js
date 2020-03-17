@@ -22,13 +22,13 @@ const FilterMainMobile = ({
   handleSelectDisplay,
   filterObject,
   currentPage,
-  toggleOpen
+  closeModal
 }) => {
   const dispatch = useDispatch();
   const handleApplyFilter = () => {
     dispatch({ type: SET_PAGE, payload: 1 });
     dispatch(getPetsWithFilter(filterObject, currentPage));
-    toggleOpen();
+    closeModal();
   };
   return (
     <div className={filterPage}>

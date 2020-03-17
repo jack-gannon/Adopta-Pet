@@ -16,7 +16,7 @@ const FilterMenuMobile = ({
   genderFilter,
   filterObject,
   currentPage,
-  toggleOpen
+  closeModal
 }) => {
   // Compoonent State
   const [displayOptions, setDisplayOptions] = useState("main");
@@ -38,7 +38,7 @@ const FilterMenuMobile = ({
             handleSelectDisplay={handleSelectDisplay}
             filterObject={filterObject}
             currentPage={currentPage}
-            toggleOpen={toggleOpen}
+            closeModal={closeModal}
           />
         ) : displayOptions === "location" ? (
           <FilterLocationMobile

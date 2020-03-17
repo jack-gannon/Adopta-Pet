@@ -7,7 +7,7 @@ import {
   modalOuter,
   closeBtn
 } from "../styles/component-modules/modal.module.css";
-const Modal = ({ toggleComponent, children }) => {
+const Modal = ({ toggleComponent, contentComponent }) => {
   const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const Modal = ({ toggleComponent, children }) => {
             <button onClick={() => handleClose()} className={closeBtn}>
               &times;
             </button>
-            {children}
+            {contentComponent(() => handleClose())}
           </div>
           <div className={modalOuter} onClick={() => handleClose()}></div>
         </div>
