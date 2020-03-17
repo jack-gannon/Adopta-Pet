@@ -33,6 +33,7 @@ const Results = ({ pets, currentPage, petsLoading }) => {
               )}
             </>
           )}
+          <Pagination currentPage={currentPage} />
         </>
       ) : petsLoading ? (
         <Spinner />

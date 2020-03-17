@@ -7,6 +7,8 @@ import {
   selectorInactive
 } from "../styles/component-modules/profile.module.css";
 import Image from "./Image";
+import Modal from "../Components/Modal";
+import ImageGallery from "../Components/ImageGallery";
 
 const ImagePanel = ({ photos, name }) => {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
@@ -21,14 +23,21 @@ const ImagePanel = ({ photos, name }) => {
   };
   return (
     <div>
-      <Image
-        src={photos[activeImgIndex].medium}
-        alt={name}
-        className={mainImg}
-        loading={mainImgLoading}
-        loadingSrc={photos[activeImgIndex].small}
-        onLoad={() => handleImageLoaded()}
-      />
+      <Modal
+        toggleComponent={clickEvent => (
+          <Image
+            src={photos[activeImgIndex].medium}
+            alt={name}
+            className={mainImg}
+            loading={mainImgLoading}
+            loadingSrc={photos[activeImgIndex].small}
+            onLoad={() => handleImageLoaded()}
+            onClick={clickEvent}
+          />
+        )}
+      >
+        <ImageGallery photos={photos} />
+      </Modal>
 
       <div className={selectorPanel}>
         {photos.map((photo, index) => (

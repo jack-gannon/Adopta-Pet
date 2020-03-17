@@ -16,29 +16,16 @@ import {
 import Placeholder from "./Placeholder";
 import ImagePanel from "./ImagePanel";
 import ProfileListOverview from "./ProfileListOverview";
-import Modal from "./Modal";
-import ImageGallery from "./ImageGallery";
 
 const ProfileComponent = ({ activePet }) => {
   const dispatch = useDispatch();
   const { name, photos, type, breeds, species, url, sections } = activePet;
-  const [imageGalleryOpen, setImageGalleryOpen] = useState(false);
   return (
     <>
       <main className={profileComponent}>
         <Link to="/browse" onClick={() => dispatch({ type: CLEAR_PETS })}>
           <button className={backBtn}>&larr;</button>
         </Link>
-        {photos && photos.length > 0 ? (
-          <Modal
-            toggleStyles={galleryToggle}
-            toggleText="⊕"
-            isOpen={imageGalleryOpen}
-            toggleOpen={() => setImageGalleryOpen(!imageGalleryOpen)}
-          >
-            <ImageGallery photos={photos} />
-          </Modal>
-        ) : null}
         <svg className={background}>
           <rect></rect>
         </svg>

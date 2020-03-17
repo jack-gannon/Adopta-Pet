@@ -28,8 +28,7 @@ const Filter = ({
       <div className={filterInput}>
         <Modal
           defaultOpen={false}
-          toggleText="Filter"
-          toggleStyles={`${btn} ${btnPrimaryOutline} ${filterToggle}`}
+          toggleComponent={clickEvent => <FilterToggle onClick={clickEvent} />}
           isOpen={isOpen}
           setOpen={setOpen}
           toggleOpen={toggleOpen}
@@ -51,5 +50,14 @@ const Filter = ({
     </>
   );
 };
+
+const FilterToggle = ({ onClick }) => (
+  <button
+    className={`${filterToggle} ${btn} ${btnPrimaryOutline}`}
+    onClick={onClick}
+  >
+    Filter
+  </button>
+);
 
 export default Filter;

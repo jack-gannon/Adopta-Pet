@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { SET_MODAL_OPEN } from "../actions/types";
 import {
   modal,
   modalContents,
   modalOuter,
   closeBtn
 } from "../styles/component-modules/modal.module.css";
-const Modal = ({ toggleText, toggleStyles, children, isOpen, toggleOpen }) => {
+const Modal = ({ toggleComponent, children }) => {
+  const [isOpen, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleOpen = () => {
+    setOpen(true);
+    dispatch({ type: SET_MODAL_OPEN, payload: true });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    dispatch({ type: SET_MODAL_OPEN, payload: false });
+  };
+
   return (
     <div>
-      <button onClick={() => toggleOpen()} className={toggleStyles}>
-        {toggleText}
-      </button>
+      {toggleComponent(() => handleOpen())}
       {isOpen ? (
         <div className={modal}>
           <div className={modalContents}>
-            <button onClick={() => toggleOpen()} className={closeBtn}>
+            <button onClick={() => handleClose()} className={closeBtn}>
               &times;
             </button>
             {children}
           </div>
-          <div className={modalOuter} onClick={() => toggleOpen()}></div>
+          <div className={modalOuter} onClick={() => handleClose()}></div>
         </div>
       ) : null}
     </div>

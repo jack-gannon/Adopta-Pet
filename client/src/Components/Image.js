@@ -7,7 +7,8 @@ const Image = ({
   className,
   loading = false,
   loadingSrc = src,
-  onLoad
+  onLoad,
+  onClick
 }) => {
   return (
     <>
@@ -15,6 +16,7 @@ const Image = ({
         src={loading ? loadingSrc : src}
         className={`${image} ${className}`}
         onLoad={onLoad}
+        onClick={onClick}
         alt={alt}
       />
     </>
