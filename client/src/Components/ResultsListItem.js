@@ -19,11 +19,13 @@ const ResultsListItem = ({ pet }) => {
   const { id, name, contact, type, breed, photos, distance } = pet;
   return (
     <li className={resultsListItem}>
-      {photos[0] ? (
-        <Image src={pet.photos[0].small} alt={`${name} the ${breed}`} />
-      ) : (
-        <Placeholder type={type} />
-      )}
+      <Link to={`/pet/${id}`}>
+        {photos[0] ? (
+          <Image src={pet.photos[0].small} alt={`${name} the ${breed}`} />
+        ) : (
+          <Placeholder type={type} />
+        )}
+      </Link>
       <div className={itemFields}>
         <div className={`${itemField} ${itemFieldMain}`}>
           <Link to={`/pet/${id}`}>

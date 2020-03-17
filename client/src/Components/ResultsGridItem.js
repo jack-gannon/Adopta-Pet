@@ -19,18 +19,20 @@ const ResultsGridItem = ({ pet }) => {
   return (
     <li className={resultsGridItem}>
       <div className={imgContainer}>
-        {// Determine whether or not to use Placeholder image for Main Image
-        photos[0] ? (
-          <>
-            <Image
-              src={photos[0] ? photos[0].medium : ""}
-              alt={name}
-              className={mainImg}
-            />
-          </>
-        ) : (
-          <Placeholder type={type} name={name} className={mainImg} />
-        )}
+        <Link to={`/pet/${id}`}>
+          {// Determine whether or not to use Placeholder image for Main Image
+          photos[0] ? (
+            <>
+              <Image
+                src={photos[0] ? photos[0].medium : ""}
+                alt={name}
+                className={mainImg}
+              />
+            </>
+          ) : (
+            <Placeholder type={type} name={name} className={mainImg} />
+          )}
+        </Link>
       </div>
       <div className={infoPanel}>
         <div className={saveSlot}>
