@@ -1,0 +1,39 @@
+.switchPanel {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.resultsSwitch {
+  border: none;
+  border-radius: 2px;
+  padding: 0.5rem;
+  line-height: 0.5rem;
+}
+
+.resultsSwitch svg {
+  width: 1.5rem;
+}
+
+.active {
+  background-color: var(--primary);
+  fill: #fff;
+  box-shadow: 0px 2px 4px var(--shadow-primary);
+}
+
+.inactive {
+  border: 1px solid var(--gray-light);
+  background-color: #fff;
+  fill: var(--primary);
+}
+
+.inactive:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.resultsSwitch:first-child {
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+}
