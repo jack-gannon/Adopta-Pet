@@ -100,19 +100,12 @@
   align-items: center;
   bottom: 0;
   left: 0;
+  z-index: 7;
   width: 100vw;
   height: 4rem;
   padding: 1rem;
   border-top: 1px solid var(--gray-lighter);
   background-color: #fff;
-}
-
-.removeAllBtn {
-  border: 1px solid var(--danger);
-  padding: 0.25rem 0.5rem;
-  background-color: transparent;
-  color: var(--danger);
-  border-radius: 1rem;
 }
 
 .total {
