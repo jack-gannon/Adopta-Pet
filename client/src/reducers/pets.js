@@ -5,7 +5,8 @@ import {
   CLEAR_PETS,
   ADD_FAVORITE,
   GET_FAVORITES,
-  REMOVE_FAVORITE
+  REMOVE_FAVORITE,
+  REMOVE_ALL_FAVORITES
 } from "../actions/types";
 
 const initialState = {
@@ -35,6 +36,11 @@ export default function petsReducer(state = initialState, action) {
       return {
         ...state,
         favorites: action.payload
+      };
+    case REMOVE_ALL_FAVORITES:
+      return {
+        ...state,
+        favorites: {}
       };
     default:
       return state;

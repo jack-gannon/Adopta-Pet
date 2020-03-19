@@ -8,6 +8,7 @@ export const CLEAR_PETS = "CLEAR_PETS";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const REMOVE_ALL_FAVORITES = "REMOVE_ALL_FAVORITES";
 // Filter & Results Actions
 export const SET_LOCATION_FILTER = "SET_LOCATION_FILTER";
 export const SET_TYPE_FILTER = "SET_TYPE_FILTER";

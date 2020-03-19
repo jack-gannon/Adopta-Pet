@@ -11,7 +11,8 @@ import {
   GET_PAGE_COUNT,
   ADD_FAVORITE,
   GET_FAVORITES,
-  REMOVE_FAVORITE
+  REMOVE_FAVORITE,
+  REMOVE_ALL_FAVORITES
 } from "./types";
 import axios from "axios";
 import { formatSearchFilter } from "../utils/formatSearchFilter";
@@ -116,6 +117,16 @@ export const removeFavorite = petId => async dispatch => {
     removeFromLocalStorage("favorites", petId);
     let favorites = localStorage.getItem("favorites");
     dispatch({ type: REMOVE_FAVORITE, payload: JSON.parse(favorites) });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Remove all favorites
+export const removeAllFavorites = () => async dispatch => {
+  try {
+    localStorage.setItem("favorites", "{}");
+    dispatch({ type: REMOVE_ALL_FAVORITES });
   } catch (error) {
     console.log(error);
   }
