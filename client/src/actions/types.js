@@ -9,6 +9,7 @@ export const ADD_FAVORITE = "ADD_FAVORITE";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const REMOVE_ALL_FAVORITES = "REMOVE_ALL_FAVORITES";
+
 // Filter & Results Actions
 export const SET_LOCATION_FILTER = "SET_LOCATION_FILTER";
 export const SET_TYPE_FILTER = "SET_TYPE_FILTER";
@@ -18,6 +19,7 @@ export const SET_AVAILABLE_BREEDS = "SET_AVAILABLE_BREEDS";
 export const APPLY_FILTER = "APPLY_FILTER";
 export const RESULTS_DISPLAY_GRID = "RESULTS_DISPLAY_GRID";
 export const RESULTS_DISPLAY_LIST = "RESULTS_DISPLAY_LIST";
+
 // Load Actions
 export const SET_PETS_LOADING = "SET_PETS_LOADING";
 export const LOAD_COMPLETE = "LOAD_COMPLETE";
@@ -36,3 +38,5 @@ export const GET_PAGE_COUNT = "GET_PAGE_COUNT";
 
 // Display Actions
 export const SET_MODAL_OPEN = "SET_MODAL_OPEN";
+export const SET_SIDEBAR_OPEN = "SET_SIDEBAR_OPEN";
+export const SET_DISPLAY_MOBILE = "SET_DISPLAY_MOBILE";
