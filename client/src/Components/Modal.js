@@ -7,8 +7,8 @@ import {
   modalOuter,
   closeBtn
 } from "../styles/component-modules/modal.module.css";
-const Modal = ({ toggleComponent, contentComponent }) => {
-  const [isOpen, setOpen] = useState(false);
+const Modal = ({ toggleComponent, contentComponent, defaultOpen = false }) => {
+  const [isOpen, setOpen] = useState(defaultOpen);
   const dispatch = useDispatch();
 
   const handleOpen = () => {

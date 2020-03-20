@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { container } from "../styles/layout.module.css";
 import { browseHeader } from "../styles/component-modules/browse.module.css";
 import { getPetsWithFilter } from "../actions/pets";
 import { getFavorites } from "../actions/pets";
+import Layout from "../Components/Layout";
 import Filter from "../Components/Filter";
 import Results from "../Components/Results";
+import EmptyState from "../Components/EmptyState";
+import ProfileComponent from "../Components/ProfileComponent";
 
 const Browse = () => {
   // Application State
   const dispatch = useDispatch();
   const pets = useSelector(state => state.pet.pets);
+  const activePet = useSelector(state => state.pet.activePet);
   const petsLoading = useSelector(state => state.load.petsLoading);
   const currentPage = useSelector(state => state.page.currentPage);
   const typeFilter = useSelector(state => state.filter.type);
@@ -34,7 +37,11 @@ const Browse = () => {
   }, [currentPage]);
 
   return (
-    <div className={container}>
+    <Layout
+      sidebarComponent={
+        activePet ? <ProfileComponent activePet={activePet} /> : <EmptyState />
+      }
+    >
       <h1 className={browseHeader}>Browse Pets</h1>
       <Filter
         filterObject={filterObject}
@@ -50,7 +57,7 @@ const Browse = () => {
         pets={pets}
         petsLoading={petsLoading}
       />
-    </div>
+    </Layout>
   );
 };
 

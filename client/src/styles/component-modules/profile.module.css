@@ -8,7 +8,6 @@
   border-radius: 8px;
   border: 1px solid var(--gray-lighter);
   margin-bottom: 4rem;
-  animation: slideUpAndFadeIn 0.5s ease-in-out;
 }
 
 .background {
@@ -75,7 +74,6 @@
   background-color: #fff;
   padding: 0.5rem;
   box-shadow: 0px -2px 8px var(--shadow-1);
-  animation: slideUpAndFadeIn2 1.25s ease-in-out;
 }
 
 .primaryAction {
@@ -189,40 +187,24 @@
   font-size: 0.875rem;
   color: var(--gray-darkest);
   text-transform: capitalize;
-  animation: fadeIn 0.25s ease-in-out;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+@media only screen and (min-width: 961px) {
+  .profileComponent {
+    z-index: 1;
+    overflow-y: scroll;
+    height: calc(100% - 8rem);
+    max-height: calc(100% - 8rem);
+    margin-top: 0rem;
+    margin-bottom: 0rem;
   }
-  100% {
-    opacity: 1;
-  }
-}
 
-@keyframes slideUpAndFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(4rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0rem);
-  }
-}
-
-@keyframes slideUpAndFadeIn2 {
-  0% {
-    opacity: 0;
-    transform: translateY(4rem);
-  }
-  75% {
-    opacity: 0;
-    transform: translateY(4rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0rem);
+  .actionPanel {
+    position: relative;
+    height: 100%;
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-bottom: -2rem;
   }
 }

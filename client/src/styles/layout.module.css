@@ -1,14 +1,62 @@
 @import "./colors.module.css";
 
+:root {
+  /* Mobile Breakpoints */
+  --bp-mobile-sm: 320px;
+  --bp-mobile-md: 360px;
+  --bp-mobile-lg: 411px;
+
+  /* Tablet Breakpoints */
+  --bp-tablet-sm: 540px;
+  --bp-tablet-md: 720px;
+  --bp-tablet-lg: 768px;
+
+  /* Tablet Breakpoints */
+  --bp-desktop-sm: 960px;
+  --bp-desktop-md: 1366px;
+  --bp-desktop-lg: 1920px;
+}
+
 .container {
+  position: relative;
+  z-index: 1;
   width: auto;
   margin: auto 1rem;
 }
 
-@media only screen and (min-width: 600px) {
+.sidebar {
+  position: fixed;
+  padding: 1rem;
+  z-index: 7;
+  height: 100%;
+  width: 25%;
+  max-width: 32rem;
+  border-left: 1px solid var(--gray-light);
+  box-shadow: -4px 0px 8px var(--shadow-1);
+  top: 3.5rem;
+  right: 0rem;
+}
+
+@media (min-width: 961px) {
+  .sidebarOpen {
+    width: 75%;
+  }
+
+  .sidebarClosed {
+    width: 100%;
+  }
+
+  .sidebarHide {
+    transform: translateX(10%);
+  }
+
+  .sidebarShow {
+    transform: translateX(0);
+  }
+
   .container {
-    width: 90vw;
-    max-width: 1200px;
+    width: 80%;
+    max-width: 1100px;
     margin: auto;
   }
 }

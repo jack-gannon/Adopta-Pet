@@ -1,10 +1,11 @@
 import React from "react";
 import FavoritesListItem from "./FavoritesListItem";
+import FavoritesRemove from "./FavoritesRemove";
+
 import {
   favoritesList,
   tableHeader,
   bottomPanel,
-  removeAllBtn,
   total
 } from "../styles/component-modules/favoritesList.module.css";
 
@@ -26,7 +27,7 @@ const FavoritesList = ({ favorites, handleRemoveFavorite }) => {
         ))}
       </ul>
       <div className={bottomPanel}>
-        <button className={removeAllBtn}>× Remove All</button>
+        <FavoritesRemove />
         <p className={total}>
           <span>{favorites.length}</span> Favorites
         </p>

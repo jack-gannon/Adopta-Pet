@@ -13,6 +13,7 @@
   position: relative;
   z-index: 4;
   max-height: 90vh;
+  max-width: 768px;
   margin: 1rem;
   padding: 1rem;
   background-color: #fff;
@@ -54,5 +55,11 @@
   }
   100% {
     transform: translateY(0em);
+  }
+}
+
+@media (min-width: 968px) {
+  .modalContents {
+    margin: 1rem auto;
   }
 }

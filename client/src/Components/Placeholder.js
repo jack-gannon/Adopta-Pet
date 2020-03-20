@@ -8,7 +8,7 @@ import furry from "../img/placeholder_furry.png";
 import barnyard from "../img/placeholder_barnyard.png";
 import scalesFinsOther from "../img/placeholder_scales.png";
 
-const Placeholder = ({ type, name, className }) => {
+const Placeholder = ({ type, name, className, onClick }) => {
   let typeSource = "";
 
   if (type === "Dog") {
@@ -30,7 +30,12 @@ const Placeholder = ({ type, name, className }) => {
   }
 
   return (
-    <img src={typeSource} alt={`${name} the ${type}`} className={className} />
+    <img
+      src={typeSource}
+      alt={`${name} the ${type}`}
+      className={className}
+      onClick={onClick}
+    />
   );
 };
 

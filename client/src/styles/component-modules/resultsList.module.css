@@ -81,3 +81,29 @@
     opacity: 1;
   }
 }
+
+@media (min-width: 560px) {
+  .itemFields {
+    width: 80%;
+  }
+
+  .itemFieldMain {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .itemFieldMain a {
+    flex-basis: 55%;
+  }
+
+  .itemFieldSub {
+    flex-basis: 25%;
+  }
+}
+
+@media (min-width: 768px) {
+  .itemValue {
+    font-size: 0.875rem;
+  }
+}
