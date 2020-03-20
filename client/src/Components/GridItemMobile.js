@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { formatAnimalName } from "../utils/formatAnimalName";
 import Placeholder from "./Placeholder";
@@ -15,14 +14,12 @@ import {
   itemValue
 } from "../styles/component-modules/resultsGrid.module.css";
 
-const ResultsGridItem = ({ pet }) => {
-  const isMobile = useSelector(state => state.display.isMobile);
+const GridItemMobile = ({ pet }) => {
   const { id, name, photos, contact, type } = pet;
-
   return (
     <li className={resultsGridItem}>
       <div className={imgContainer}>
-        <Link to={isMobile ? `/pet/${id}` : null}>
+        <Link to={`/pet/${id}`}>
           {// Determine whether or not to use Placeholder image for Main Image
           photos[0] ? (
             <>
@@ -41,7 +38,7 @@ const ResultsGridItem = ({ pet }) => {
         <div className={saveSlot}>
           <ResultsSaveButton pet={pet} />
         </div>
-        <Link to={isMobile ? `/pet/${id}` : null}>
+        <Link to={`/pet/${id}`}>
           {" "}
           <p className={itemName}>{formatAnimalName(name, 12)}</p>
         </Link>
@@ -53,4 +50,4 @@ const ResultsGridItem = ({ pet }) => {
   );
 };
 
-export default ResultsGridItem;
+export default GridItemMobile;

@@ -4,8 +4,11 @@
 
 .resultsGrid ul {
   display: grid;
-  grid-template-columns: calc(50% - 0.25rem) calc(50% - 0.25rem);
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.125s ease-in-out;
 }
 
 /* ------------- GRID RESULTS --------------- */
@@ -13,10 +16,14 @@
 .resultsGridItem {
   position: relative;
   background-color: #fff;
-  margin-bottom: 0.5rem;
   border: 1px solid #eaeaea;
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: 0px 2px 8px var(--shadow-1);
+}
+
+.selected {
+  opacity: 0.3;
 }
 
 .toggleSlot {
@@ -154,5 +161,54 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .resultsGrid ul {
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  .resultsGridItem {
+    box-shadow: 0px 2px 8px var(--shadow-1);
+  }
+
+  .imgContainer {
+    height: 16rem;
+  }
+
+  .infoPanel {
+    padding: 1em;
+  }
+
+  .itemName {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .itemValue {
+    font-size: 1rem;
+  }
+
+  .saveSlot {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .resultsGrid ul {
+    grid-template-columns: repeat(3, 1fr);
+    animation: fadeIn 0.125s ease-in-out;
+  }
+}
+
+@media (min-width: 961px) {
+  .resultsGridItem:hover {
+    cursor: pointer;
+    transition: opacity 0.125s ease-in-out;
   }
 }
