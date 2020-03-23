@@ -1,5 +1,13 @@
 @import "./colors.module.css";
 
+.sansSerif {
+  font-family: "Helvetica", sans-serif;
+}
+
+.serif {
+  font-family: "Georgia", serif;
+}
+
 .display {
   font-size: 4rem;
   margin-bottom: 2rem;
@@ -37,6 +45,7 @@
 }
 
 .label {
+  composes: sansSerif;
   margin-bottom: 1rem;
   line-height: 1.5rem;
   color: var(--gray-dark);
@@ -45,14 +54,6 @@
 .small {
   font-size: 0.875rem;
   line-height: 1rem;
-}
-
-.sansSerif {
-  font-family: "Helvetica", sans-serif;
-}
-
-.serif {
-  font-family: "Georgia", serif;
 }
 
 .bold {

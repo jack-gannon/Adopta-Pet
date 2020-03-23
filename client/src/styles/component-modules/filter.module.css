@@ -12,6 +12,10 @@
   border-bottom: 1px solid var(--gray-light);
 }
 
+.filterMobile {
+  display: block;
+}
+
 .filterToggle {
   flex-basis: 33%;
 }
@@ -141,6 +145,10 @@
   border-bottom: 1px solid var(--gray-lighter);
 }
 
+.animalTypeListItem:hover {
+  cursor: pointer;
+}
+
 .animalTypeListItem button:focus {
   outline: none;
 }
@@ -151,6 +159,10 @@
 
 .animalTypeListItemDeselected {
   background-color: white;
+}
+
+.animalTypeListItemDeselected:hover {
+  background-color: var(--primary-light);
 }
 
 .animalTypeListItem button {
@@ -170,6 +182,7 @@
 
 .animalBreedListItem button:focus {
   outline: none;
+  background-color: var(--primary);
 }
 
 .animalBreedListItemSelected {
@@ -323,5 +336,48 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (min-width: 961px) {
+  .filterMobile {
+    display: none;
+  }
+
+  .filterPage {
+    width: 24rem;
+  }
+
+  .filterBackBtn {
+    display: none;
+  }
+
+  .filterHeader {
+    display: none;
+  }
+
+  .filterLocationRadio {
+    margin-right: 0.25rem;
+  }
+
+  .locationInput {
+    padding-bottom: 2rem;
+  }
+
+  .filterSelectBtn,
+  .filterSelectBtn:disabled {
+    width: 8rem;
+    float: right;
+  }
+
+  .filterGenderSelect {
+    flex-direction: column;
+    width: 15.5rem;
+    margin-bottom: 0rem;
+  }
+
+  .filterGenderRadioBtn {
+    flex-basis: 100%;
+    width: 100%;
   }
 }

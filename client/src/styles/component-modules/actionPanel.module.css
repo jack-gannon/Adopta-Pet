@@ -1,0 +1,44 @@
+.actionPanel {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid var(--gray-lighter);
+  background-color: #fff;
+  padding: 0.5rem;
+  box-shadow: 0px -2px 8px var(--shadow-1);
+}
+
+.primaryAction {
+  height: 2.25rem;
+  background-color: var(--primary);
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  box-shadow: 0px 2px 6px var(--shadow-primary);
+}
+
+.primaryAction button {
+  color: #fff;
+}
+
+.primaryAction button b {
+  font-weight: 800;
+}
+
+@media only screen and (min-width: 961px) {
+  .actionPanel {
+    position: relative;
+    box-sizing: border-box;
+    z-index: 2;
+    height: 10%;
+    border: 1px solid pink;
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-bottom: -2rem;
+    margin: 0rem -1rem -2rem -1rem;
+  }
+}

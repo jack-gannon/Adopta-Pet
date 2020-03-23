@@ -3,6 +3,7 @@
 .resultsList {
   composes: sansSerif from "../type.module.css";
   animation: fadeIn 0.125s ease-in-out;
+  cursor: pointer;
 }
 
 .resultsListItem {
@@ -10,9 +11,28 @@
   display: flex;
   align-items: center;
   margin-bottom: 0.125rem;
-  background-color: #fff;
   border: 1px solid var(--gray-lighter);
   border-radius: 4px;
+}
+
+.selected {
+  background-color: var(--primary-light);
+}
+
+.selected:hover {
+  background-color: var(--primary-light);
+}
+
+.deselected {
+  background-color: #fff;
+}
+
+.deselected:hover {
+  background-color: var(--gray-lightest);
+}
+
+.deselected:active {
+  background-color: var(--primary);
 }
 
 .resultsListItem a {
@@ -93,7 +113,7 @@
     align-items: baseline;
   }
 
-  .itemFieldMain a {
+  .itemName {
     flex-basis: 55%;
   }
 

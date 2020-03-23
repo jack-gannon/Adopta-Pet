@@ -1,0 +1,54 @@
+.profileHeader {
+  background-color: #fff;
+  padding-bottom: 2rem;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 8rem;
+  border-radius: 8px 8px 50% 50%;
+  border-bottom: 8px solid var(--primary-light);
+  background-color: var(--primary);
+}
+
+.background rect {
+  fill: var(--primary);
+  width: 100%;
+  height: 100%;
+}
+
+.backBtn {
+  position: absolute;
+  z-index: 5;
+  top: 1rem;
+  left: 1rem;
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid var(--primary-light);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--primary-light);
+}
+
+.profileName {
+  composes: sansSerif from "../type.module.css";
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gray-darkest);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.secondaryInfo {
+  composes: sansSerif from "../type.module.css";
+  font-size: 1rem;
+  text-align: center;
+  color: var(--gray-medium);
+  margin-top: 0.5rem;
+}
+
+@media only screen and (min-width: 961px) {
+  .profileHeader {
+  }
+}

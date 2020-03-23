@@ -1,7 +1,11 @@
 @import "../colors.module.css";
 
+.listOverview {
+  background-color: #fff;
+}
+
 .profileSection {
-  margin-top: 2rem;
+  padding-top: 2rem;
 }
 
 .sectionHeader {
@@ -48,4 +52,11 @@
 
 .detailIconX {
   stroke: var(--quaternary-dark);
+}
+
+@media only screen and (min-width: 961px) {
+  .listOverview {
+    overflow-y: scroll;
+    height: 50%;
+  }
 }
