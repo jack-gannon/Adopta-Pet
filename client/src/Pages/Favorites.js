@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite, getFavorites } from "../actions/pets";
 import { objectToArray } from "../utils/objectToArray";
-import EmptyState from "../Components/EmptyState";
-import FavoritesList from "../Components/FavoritesList";
+import EmptyState from "../Components/Misc/EmptyState";
+import FavoritesList from "../Components/Favorites/FavoritesList";
 import { container } from "../styles/layout.module.css";
 import { header } from "../styles/component-modules/favoritesList.module.css";
 

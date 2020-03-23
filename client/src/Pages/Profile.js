@@ -4,8 +4,8 @@ import { getPet } from "../actions/pets";
 import { CLEAR_PET } from "../actions/types";
 import { container } from "../styles/layout.module.css";
 import { useParams } from "react-router-dom";
-import Spinner from "../Components/Spinner";
-import ProfileComponent from "../Components/ProfileComponent";
+import Spinner from "../Components/Misc/Spinner";
+import ProfileComponent from "../Components/Profile/ProfileComponent";
 
 const Profile = () => {
   let { id } = useParams();

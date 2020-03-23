@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { browseHeader } from "../styles/component-modules/browse.module.css";
 import { getPetsWithFilter } from "../actions/pets";
 import { getFavorites } from "../actions/pets";
-import Layout from "../Components/Layout";
-import Filter from "../Components/Filter";
-import Results from "../Components/Results";
-import EmptyState from "../Components/EmptyState";
-import ProfileComponent from "../Components/ProfileComponent";
+import Layout from "../Components/Layout/Layout";
+import Filter from "../Components/Browse/Filter/Filter";
+import Results from "../Components/Browse/Results/Results";
+import EmptyState from "../Components/Misc/EmptyState";
+import ProfileComponent from "../Components/Profile/ProfileComponent";
+import Spinner from "../Components/Misc/Spinner";
 
 const Browse = () => {
   // Application State
@@ -15,6 +16,7 @@ const Browse = () => {
   const pets = useSelector(state => state.pet.pets);
   const activePet = useSelector(state => state.pet.activePet);
   const petsLoading = useSelector(state => state.load.petsLoading);
+  const petLoading = useSelector(state => state.load.petLoading);
   const currentPage = useSelector(state => state.page.currentPage);
   const typeFilter = useSelector(state => state.filter.type);
   const breedFilter = useSelector(state => state.filter.breed);
@@ -22,7 +24,7 @@ const Browse = () => {
   const locationFilterType = useSelector(state => state.filter.locationType);
   const genderFilter = useSelector(state => state.filter.gender);
 
-  const filterObject = {
+  let filterObject = {
     zip: locationFilter,
     state: null,
     city: null,
@@ -34,12 +36,24 @@ const Browse = () => {
   useEffect(() => {
     dispatch(getPetsWithFilter(filterObject, currentPage));
     dispatch(getFavorites());
-  }, [currentPage]);
+  }, [
+    currentPage,
+    typeFilter,
+    locationFilter,
+    locationFilterType,
+    breedFilter
+  ]);
 
   return (
     <Layout
       sidebarComponent={
-        activePet ? <ProfileComponent activePet={activePet} /> : <EmptyState />
+        petLoading ? (
+          <Spinner />
+        ) : activePet ? (
+          <ProfileComponent activePet={activePet} />
+        ) : (
+          <EmptyState />
+        )
       }
     >
       <h1 className={browseHeader}>Browse Pets</h1>
