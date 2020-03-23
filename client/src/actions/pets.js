@@ -41,6 +41,7 @@ export const getPets = () => async dispatch => {
 
 // Get pets with filter
 export const getPetsWithFilter = (filter, pageNumber) => async dispatch => {
+  console.log({ filter });
   dispatch({ type: SET_PETS_LOADING });
   const { location, type, breed, gender } = formatSearchFilter({
     filter
