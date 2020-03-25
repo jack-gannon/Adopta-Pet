@@ -1,41 +1,44 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { SET_MODAL_OPEN } from "../../actions/types";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_MODAL_OPEN, CLEAR_MODAL_COMPONENT } from "../../actions/types";
+import FavoritesRemoveConfirm from "../Favorites/FavoritesRemoveConfirm";
+import FilterMenuMobile from "../Browse/Filter/FilterMenuMobile";
+import ImageGallery from "../Profile/ImageGallery";
 import {
   modal,
   modalContents,
   modalOuter,
   closeBtn
 } from "../../styles/component-modules/modal.module.css";
-const Modal = ({ toggleComponent, contentComponent, defaultOpen = false }) => {
-  const [isOpen, setOpen] = useState(defaultOpen);
+const Modal = ({ isOpen }) => {
+  const modalComponent = useSelector(state => state.display.modalComponent);
   const dispatch = useDispatch();
 
-  const handleOpen = () => {
-    setOpen(true);
-    dispatch({ type: SET_MODAL_OPEN, payload: true });
-  };
-
   const handleClose = () => {
-    setOpen(false);
     dispatch({ type: SET_MODAL_OPEN, payload: false });
+    dispatch({ type: CLEAR_MODAL_COMPONENT });
   };
 
   return (
-    <div>
-      {toggleComponent(() => handleOpen())}
+    <>
       {isOpen ? (
         <div className={modal}>
           <div className={modalContents}>
             <button onClick={() => handleClose()} className={closeBtn}>
               &times;
             </button>
-            {contentComponent(() => handleClose())}
+            {modalComponent === "remove-favorites" ? (
+              <FavoritesRemoveConfirm closeModal={() => handleClose()} />
+            ) : modalComponent === "mobile-filter" ? (
+              <FilterMenuMobile />
+            ) : modalComponent === "image-gallery" ? (
+              <ImageGallery />
+            ) : null}
           </div>
           <div className={modalOuter} onClick={() => handleClose()}></div>
         </div>
       ) : null}
-    </div>
+    </>
   );
 };
 

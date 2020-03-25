@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { openModalWithComponent } from "../../actions/display";
 import {
   mainImg,
   selectorPanel,
@@ -7,10 +9,9 @@ import {
   selectorInactive
 } from "../../styles/component-modules/imagePanel.module.css";
 import Image from "../Misc/Image";
-import Modal from "../Layout/Modal";
-import ImageGallery from "./ImageGallery";
 
 const ImagePanel = ({ photos, name }) => {
+  const dispatch = useDispatch();
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [mainImgLoading, setMainImgLoading] = useState(true);
   const handleImageLoaded = () => {
@@ -21,25 +22,21 @@ const ImagePanel = ({ photos, name }) => {
     setMainImgLoading(true);
     setActiveImgIndex(imgIndex);
   };
+
+  const handleOpenImageGallery = () => {
+    dispatch(openModalWithComponent("image-gallery"));
+  };
   return (
     <div>
-      <Modal
-        toggleComponent={clickEvent => (
-          <Image
-            src={photos[activeImgIndex].medium}
-            alt={name}
-            className={mainImg}
-            loading={mainImgLoading}
-            loadingSrc={photos[activeImgIndex].small}
-            onLoad={() => handleImageLoaded()}
-            onClick={clickEvent}
-          />
-        )}
-        contentComponent={clickEvent => (
-          <ImageGallery photos={photos} startIndex={activeImgIndex} />
-        )}
-      ></Modal>
-
+      <Image
+        src={photos[activeImgIndex].medium}
+        alt={name}
+        className={mainImg}
+        loading={mainImgLoading}
+        loadingSrc={photos[activeImgIndex].small}
+        onLoad={() => handleImageLoaded()}
+        onClick={() => handleOpenImageGallery()}
+      />
       <div className={selectorPanel}>
         {photos.map((photo, index) => (
           <button

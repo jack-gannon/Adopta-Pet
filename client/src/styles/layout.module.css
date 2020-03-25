@@ -17,6 +17,13 @@
   --bp-desktop-lg: 1920px;
 }
 
+.main {
+  position: relative;
+  height: 100%;
+  max-height: 100vh;
+  z-index: 4;
+}
+
 .container {
   position: relative;
   z-index: 1;
@@ -30,9 +37,10 @@
   padding: 1rem;
   z-index: 5;
   height: 100%;
-  width: 25%;
+  width: 30%;
   max-width: 32rem;
   border-left: 1px solid var(--gray-light);
+  background-color: var(--gray-lightest);
   box-shadow: -4px 0px 8px var(--shadow-1);
   top: 3.5rem;
   right: 0rem;
@@ -44,7 +52,7 @@
   }
 
   .sidebarOpen {
-    width: 75%;
+    width: 70%;
   }
 
   .sidebarClosed {
@@ -78,6 +86,16 @@
     width: 80%;
     max-width: 1100px;
     margin: auto;
+  }
+}
+
+@media (min-width: 1366px) {
+  .sidebarOpen {
+    width: 75%;
+  }
+
+  .sidebar {
+    width: 25%;
   }
 }
 

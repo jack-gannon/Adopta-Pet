@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite, getFavorites } from "../actions/pets";
 import { objectToArray } from "../utils/objectToArray";
+import Layout from "../Components/Layout/Layout";
 import EmptyState from "../Components/Misc/EmptyState";
 import FavoritesList from "../Components/Favorites/FavoritesList";
 import { container } from "../styles/layout.module.css";
@@ -22,7 +23,7 @@ const Favorites = () => {
   };
 
   return (
-    <div className={container}>
+    <Layout>
       <h1 className={header}>Favorites</h1>
       {favoritesArray.length > 0 ? (
         <FavoritesList
@@ -32,7 +33,7 @@ const Favorites = () => {
       ) : (
         <EmptyState type="favorites" />
       )}
-    </div>
+    </Layout>
   );
 };
 

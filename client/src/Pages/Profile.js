@@ -6,6 +6,7 @@ import { container } from "../styles/layout.module.css";
 import { useParams } from "react-router-dom";
 import Spinner from "../Components/Misc/Spinner";
 import ProfileComponent from "../Components/Profile/ProfileComponent";
+import Layout from "../Components/Layout/Layout";
 
 const Profile = () => {
   let { id } = useParams();
@@ -22,7 +23,7 @@ const Profile = () => {
   }, [dispatch, id]);
 
   return (
-    <div className={container}>
+    <Layout>
       {petLoading || !activePet ? (
         <Spinner />
       ) : (
@@ -30,7 +31,7 @@ const Profile = () => {
           <ProfileComponent activePet={activePet} />
         </>
       )}
-    </div>
+    </Layout>
   );
 };
 
