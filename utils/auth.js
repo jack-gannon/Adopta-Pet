@@ -4,7 +4,7 @@ const DataCache = require("./cache");
 let authCache = new DataCache(authClient, 60);
 
 async function authClient() {
-  var config = {
+  const config = {
     url: "https://api.petfinder.com/v2/oauth2/token",
     method: "post",
     data: {
@@ -14,8 +14,8 @@ async function authClient() {
     }
   };
 
-  let token = await axios(config).then(res => res.data.access_token);
-  let client = new petfinder.Client({
+  const token = await axios(config).then(res => res.data.access_token);
+  const client = new petfinder.Client({
     apiKey: process.env.API_KEY,
     secret: process.env.API_SECRET
   });
@@ -24,9 +24,12 @@ async function authClient() {
 }
 
 async function auth() {
-  let authorizedClient = await authCache.getData().then(response => {
-    return response;
-  });
+  const authorizedClient = await authCache
+    .getData()
+    .then(response => {
+      return response;
+    })
+    .catch(error => console.log(error));
   return authorizedClient;
 }
 
