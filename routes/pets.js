@@ -8,8 +8,7 @@ const restructurePetData = require("../utils/restructurePetData");
 // @desc    Get pets
 // @access  Public
 router.get("/", async (req, res) => {
-  let client = await auth();
-  client.animal
+  req.client.animal
     .search()
     .then(response => {
       res.json(response.data.animals);
@@ -24,8 +23,7 @@ router.get("/", async (req, res) => {
 // @desc    Get pets based on search parameters
 // @access  Public
 router.get("/search/:location.:type.:breed.:gender/:page", async (req, res) => {
-  let client = await auth();
-  client.animal
+  req.client.animal
     .search(formatSearchParams(req.params))
     .then(response => {
       console.log("search request:", formatSearchParams(req.params));
@@ -51,8 +49,7 @@ router.get("/search/:location.:type.:breed.:gender/:page", async (req, res) => {
 // @desc    Get pet based on ID
 // @access  Public
 router.get("/pet/:id", async (req, res) => {
-  let client = await auth();
-  client.animal
+  req.client.animal
     .show(req.params.id)
     .then(response => restructurePetData(response.data.animal))
     .then(response => {
