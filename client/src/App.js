@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "./styles/global.css";
 import AppContainer from "./Components/HOCs/AppContainer";
+import Layout from "./Components/Layout/Layout";
 import Home from "./Pages/Home";
 import Browse from "./Pages/Browse";
 import Navbar from "./Components/Layout/Navbar";
@@ -20,13 +21,15 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/browse">
-              <Browse />
-            </Route>
-            <Route exact path="/favorites">
-              <Favorites />
-            </Route>
-            <Route exact path="/pet/:id" component={Profile} />
+            <Layout>
+              <Route path="/browse">
+                <Browse />
+              </Route>
+              <Route path="/favorites">
+                <Favorites />
+              </Route>
+              <Route path="/pet/:id" component={Profile} />
+            </Layout>
           </Switch>
         </Router>
       </AppContainer>

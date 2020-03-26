@@ -23,7 +23,7 @@ const Profile = () => {
   }, [dispatch, id]);
 
   return (
-    <Layout>
+    <>
       {petLoading || !activePet ? (
         <Spinner />
       ) : (
@@ -31,7 +31,7 @@ const Profile = () => {
           <ProfileComponent activePet={activePet} />
         </>
       )}
-    </Layout>
+    </>
   );
 };
 

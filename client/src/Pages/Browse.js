@@ -45,17 +45,7 @@ const Browse = () => {
   ]);
 
   return (
-    <Layout
-      sidebarComponent={
-        petLoading ? (
-          <Spinner />
-        ) : activePet ? (
-          <ProfileComponent activePet={activePet} />
-        ) : (
-          <EmptyState />
-        )
-      }
-    >
+    <>
       <h1 className={browseHeader}>Browse Pets</h1>
       <Filter
         filterObject={filterObject}
@@ -71,7 +61,7 @@ const Browse = () => {
         pets={pets}
         petsLoading={petsLoading}
       />
-    </Layout>
+    </>
   );
 };
 

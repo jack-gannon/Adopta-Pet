@@ -23,7 +23,7 @@ const Favorites = () => {
   };
 
   return (
-    <Layout>
+    <>
       <h1 className={header}>Favorites</h1>
       {favoritesArray.length > 0 ? (
         <FavoritesList
@@ -33,7 +33,7 @@ const Favorites = () => {
       ) : (
         <EmptyState type="favorites" />
       )}
-    </Layout>
+    </>
   );
 };
 
