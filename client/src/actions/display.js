@@ -5,6 +5,7 @@ import {
   SET_MODAL_COMPONENT,
   CLEAR_MODAL_COMPONENT,
   SET_SIDEBAR_OPEN,
+  SET_SIDEBAR_COMPONENT,
   SET_ALERT_DISPLAY_OPEN,
   ADD_ALERT,
   REMOVE_ALERT,
@@ -27,6 +28,11 @@ export const closeModal = () => dispatch => {
 
 export const setSidebarOpen = value => dispatch => {
   dispatch({ type: SET_SIDEBAR_OPEN, payload: value });
+};
+
+export const openSidebarWithComponent = componentIdentifier => dispatch => {
+  dispatch({ type: SET_SIDEBAR_OPEN, payload: true });
+  dispatch({ type: SET_SIDEBAR_COMPONENT, payload: componentIdentifier });
 };
 
 export const openAlertDisplay = () => dispatch => {

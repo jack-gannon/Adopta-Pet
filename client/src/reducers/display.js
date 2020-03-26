@@ -3,6 +3,7 @@ import {
   SET_MODAL_COMPONENT,
   CLEAR_MODAL_COMPONENT,
   SET_SIDEBAR_OPEN,
+  SET_SIDEBAR_COMPONENT,
   SET_ALERT_DISPLAY_OPEN,
   ADD_ALERT,
   REMOVE_ALERT,
@@ -13,6 +14,7 @@ const initialState = {
   modalIsOpen: false,
   modalComponent: null,
   sidebarIsOpen: false,
+  sidebarComponent: null,
   alertQueue: [],
   alertDisplayIsOpen: false,
   isMobile: false
@@ -30,6 +32,8 @@ export default function displayReducer(state = initialState, action) {
     }
     case SET_SIDEBAR_OPEN:
       return { ...state, sidebarIsOpen: action.payload };
+    case SET_SIDEBAR_COMPONENT:
+      return { ...state, sidebarComponent: action.payload };
     case SET_ALERT_DISPLAY_OPEN:
       return { ...state, alertDisplayIsOpen: action.payload };
     case ADD_ALERT:
