@@ -8,11 +8,7 @@ import AlertItem from "./AlertItem";
 import { CSSTransition } from "react-transition-group";
 
 const AlertsDisplay = ({ alerts }) => {
-  const alertDisplayIsOpen = useSelector(
-    state => state.display.alertDisplayIsOpen
-  );
-
-  console.log(alerts);
+  const [currentAlert, setCurrentAlert] = useState(null);
 
   return (
     <CSSTransition
@@ -29,6 +25,8 @@ const AlertsDisplay = ({ alerts }) => {
               key={alert.id}
               index={index}
               alertsLength={alerts.length}
+              currentAlert={currentAlert}
+              setCurrentAlert={setCurrentAlert}
               componentIdentifier={alert.componentIdentifier}
             />
           ))}
